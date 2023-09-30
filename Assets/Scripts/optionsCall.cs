@@ -6,13 +6,17 @@ public class optionsCall : MonoBehaviour
 {
     //Transfers text
     RoomSystem system = FindAnyObjectByType<RoomSystem>();
+
     public void callReject()
     {
-        
+        if (system.patientReject())
+        {
+
+        }
     }
     public void callAccept()
     {
-
+        if(c)
     }
     public void callWaitlist()
     {

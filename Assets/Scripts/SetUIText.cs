@@ -10,13 +10,43 @@ public class SetUIText : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _insurance;
     [SerializeField] private TextMeshProUGUI _injury;
     [SerializeField]
-    private string firstName;
+    private string currentFirstName;
     [SerializeField]
-    private string lastName;
+    private string currentLastName;
     [SerializeField]
-    private string injury;
+    private injury currentInjury;
     [SerializeField]
-    string insurance;
+    private insurance currentInsurance;
+
+    public class insurance
+    {
+        public string name;
+        public int value;
+        public insurance(string getName, int getVal)
+        {
+            name = getName;
+            value = getVal;
+        }
+        public override string ToString()
+        {
+            return name;
+        }
+    }
+    public class injury
+    {
+        public string name;
+        //Out of 10
+        public int severity;
+        public injury(string getName, int getSev)
+        {
+            name = getName;
+            severity = getSev;
+        }
+        public override string ToString()
+        {
+            return name;
+        }
+    }
     private string[] _firstNames = new string[]
     { "Sam", "Jamie", "Blake", "Avery", "Parker", "Riley", "Rowan","James", "Rory", "Logan", "Ryan", "Frankie", "Aubrey", "Alexis", "Morgan",
       "Liam", "Johnny", "Colin", "Clemence", "Allen", "Alec", "Shane", "Isabella", "Russell", "Aliyah", "Bobby", "Stacy", "Mo", "Michael",
@@ -33,20 +63,57 @@ public class SetUIText : MonoBehaviour
     "McDonald", "Jordan", "Peterson", "Sanchez", "Huang", "Anderson", "Aarons"
     };
 
-    private string[] _insurances = new string[]
+    private insurance[] _insurances = new insurance[]
     {
-    "Kaiser Roll Permanente", "Smiles Inc.", "MidCare Health", "Lowmark Inc.", "Fat Johnson & Johnson", "Cigma Nuts", "RGB Shield", "Inhumana"
+    new insurance("Kaiser Roll Permanente", 10),
+    new insurance("Smiles Inc.", 10),
+    new insurance("MidCare Health", 10),
+    new insurance("Lowmark Inc.", 10),
+    new insurance("Fat Johnson & Johnson", 10),
+    new insurance("Cigma Nuts", 10),
+    new insurance("RGB Shield", 10),
+    new insurance("Inhumana", 10)
     };
 
-
-    private string[] _injuries = new string[]
+    private injury[] _injuries = new injury[]
     {
-    "Broken arm", "Broken leg", "Fractured pinky", "Fractured big toe", "Skin scrape", "Pulled groin", "Dislocated shoulder",
-    "Dislocated kneecap", "Dog bite", "Snake bite", "ACL tear", "Concussion", "Third-degree burns", "Second-degree burns",
-    "First-degree burns", "Pregnancy", "Cardiac arrest", "Stroke", "Seizure", "Blunt force trauma", "Brain trauma",
-    "Internal organ bleeding", "Spinal cord injury", "Liver failure", "Food poisoning", "Appendicitis", "Kidney infection",
-    "Urinary tract infection", "Severe fever", "Vomiting blood", "Slurred speech", "Sore throat", "Bronchitis", "Common cold",
-    "Allergies", "Mysterious stomach ache", "E coli infection"
+    new injury("Broken arm", 10),
+    new injury("Broken leg", 10),
+    new injury("Fractured pinky", 10),
+    new injury("Fractured big toe", 10),
+    new injury("Skin scrape", 10),
+    new injury("Pulled groin", 10),
+    new injury("Dislocated shoulder", 10),
+    new injury("Dislocated kneecap", 10),
+    new injury("Dog bite", 10),
+    new injury("Snake bite", 10),
+    new injury("ACL tear", 10),
+    new injury("Concussion", 10),
+    new injury("Third-degree burns", 10),
+    new injury("Second-degree burns", 10),
+    new injury("First-degree burns", 10),
+    new injury("Induced labor", 10),
+    new injury("Cardiac arrest", 10),
+    new injury("Stroke", 10),
+    new injury("Seizure", 10),
+    new injury("Blunt force trauma", 10),
+    new injury("Brain trauma", 10),
+    new injury("Internal organ bleeding", 10),
+    new injury("Spinal cord injury", 10),
+    new injury("Liver failure", 10),
+    new injury("Food poisoning", 10),
+    new injury("Appendicitis", 10),
+    new injury("Kidney infection", 10),
+    new injury("Urinary tract infection", 10),
+    new injury("Severe fever", 10),
+    new injury("Vomiting blood", 10),
+    new injury("Slurred speech", 10),
+    new injury("Sore throat", 10),
+    new injury("Bronchitis", 10),
+    new injury("Common cold", 10),
+    new injury("Allergies", 10),
+    new injury("Mysterious stomach ache", 10),
+    new injury("E coli infection", 10)
     };
 
 
@@ -54,18 +121,18 @@ public class SetUIText : MonoBehaviour
     public void SetText()
     {
         SetValues(_name, _firstNames, _lastNames);
-        insurance = _insurances[UnityEngine.Random.Range(0, _insurances.Length - 1)];
-        SetValues(_insurance, insurance);
-        injury = _injuries[UnityEngine.Random.Range(0, _injuries.Length - 1)];
-        SetValues(_injury, injury);
+        currentInsurance = _insurances[UnityEngine.Random.Range(0, _insurances.Length - 1)];
+        SetValues(_insurance, currentInsurance.ToString());
+        currentInjury = _injuries[UnityEngine.Random.Range(0, _injuries.Length - 1)];
+        SetValues(_injury, currentInjury.ToString());
     }
 
     // for the name
     public void SetValues(TextMeshProUGUI textMesh, string[] first, string[] last)
     {
-        firstName = first[UnityEngine.Random.Range(0, first.Length - 1)];
-        lastName = last[UnityEngine.Random.Range(0, first.Length - 1)];
-        textMesh.text = firstName + ", " + lastName;
+        currentFirstName = first[UnityEngine.Random.Range(0, first.Length - 1)];
+        currentLastName = last[UnityEngine.Random.Range(0, first.Length - 1)];
+        textMesh.text = currentFirstName + ", " + currentLastName;
     }
 
     // for everything else
