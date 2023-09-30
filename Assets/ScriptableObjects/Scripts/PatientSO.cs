@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "New PatientSO")]
+[CreateAssetMenu(menuName = "PatientSO")]
 public class PatientSO : ScriptableObject
 {
     public String[] firstNames;
