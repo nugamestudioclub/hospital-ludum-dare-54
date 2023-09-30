@@ -37,10 +37,12 @@ public class RoomSystem : MonoBehaviour
     #region var
     [SerializeField]
     private int waitListSpace;
+    [SerializeField]
+    private int roomsAmount;
     //Patients that will fill any rooms upon open spot
-    private List<Patient> waitList;
+    private List<Patient> waitList = new List<Patient>();
     //Rooms avaliable
-    private List<Room> rooms;
+    private List<Room> rooms = new List<Room>();
     #endregion
     public bool isRoomEmpty(Room givenRoom)
     {
@@ -94,6 +96,13 @@ public class RoomSystem : MonoBehaviour
         else
         {
             hospitalMetrics.handleRejectionNorm();
+        }
+    }
+    void Start()
+    {
+        for(int i = 0; i < roomsAmount; i++)
+        {
+            rooms.Add((Room)gameObject.AddComponent(typeof(Room)));
         }
     }
     // Update is called once per frame
