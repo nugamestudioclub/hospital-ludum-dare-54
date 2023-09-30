@@ -14,23 +14,26 @@ public class RoomSystem : MonoBehaviour
     //Patient class used to store information to be processed into rooms
     public class Patient 
     {
-        public string firstName;
-        public string lastName;
         //Time it takes for patient to leave room
         public float fixTime;
         //Out of 100%
         public float failRatio;
         public float deathOnTurnDownRate;
         public int insuranceValue;
+        //For flavor text
+        public string firstName;
+        public string lastName;
+        public string injuryName;
+        public string insuranceName;
         //Constructor
-        public Patient(string getFirst, string getLast, int getSeverity, int getInsuranceValue)
+        public Patient(string getFirst, string getLast, SetUIText.injury getInjury, SetUIText.insurance getInsurance)
         {
             firstName = getFirst;
             lastName = getLast;
-            insuranceValue = getInsuranceValue;
-            fixTime = getSeverity * severityToTimeRatio;
-            failRatio = getSeverity * severityToFailRatio;
-            deathOnTurnDownRate = getSeverity * severityToDieOnTurndown;
+            insuranceValue = getInsurance.value;
+            fixTime = getInjury.severity * severityToTimeRatio;
+            failRatio = getInjury.severity * severityToFailRatio;
+            deathOnTurnDownRate = getInjury.severity * severityToDieOnTurndown;
         }
     }
     #endregion
@@ -38,7 +41,7 @@ public class RoomSystem : MonoBehaviour
     public class Room
     {
         [SerializeField]
-        private Patient currentPatient = new Patient("null pat", "null pat", 0, 0);
+        private Patient currentPatient = new Patient("null pat", "null pat", new SetUIText.injury("null", 0), new SetUIText.insurance("null", 0));
         [SerializeField]
         private bool empty = true;
         //Time until patient is fixed
