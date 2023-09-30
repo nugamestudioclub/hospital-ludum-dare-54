@@ -9,6 +9,8 @@ public class RoomSystem : MonoBehaviour
     private static float severityToTimeRatio = 20;
     [SerializeField]
     private static float severityToFailRatio = 7;
+    [SerializeField]
+    private static float severityToDieOnTurndown = 7;
     //Patient class used to store information to be processed into rooms
     public class Patient 
     {
@@ -18,6 +20,7 @@ public class RoomSystem : MonoBehaviour
         public float fixTime;
         //Out of 100%
         public float failRatio;
+        public float deathOnTurnDownRate;
         public int insuranceValue;
         //Constructor
         Patient(string getFirst, string getLast, int getSeverity, int getInsuranceValue)
@@ -27,6 +30,7 @@ public class RoomSystem : MonoBehaviour
             insuranceValue = getInsuranceValue;
             fixTime = getSeverity * severityToTimeRatio;
             failRatio = getSeverity * severityToFailRatio;
+            deathOnTurnDownRate = getSeverity * severityToDieOnTurndown;
         }
     }
     #endregion
@@ -48,12 +52,13 @@ public class RoomSystem : MonoBehaviour
         return rooms.FindIndex(isRoomEmpty);
     }
     //Attempts to add a patient to a unused room
-    public bool addPatientToRoom()
+    public bool addPatientToRoom(Patient admittedPatient)
     {
         int getOpenIndex = hasVacantRoom();
         //Room Found
         if (getOpenIndex != -1)
         {
+            hospitalMetrics.handleHospitalAdmit();
             return true;
         }
         //Room Not found
@@ -63,27 +68,40 @@ public class RoomSystem : MonoBehaviour
         }
     }
     //Attempts to add a patient to a waitlist
-    public bool addPatientToWaitlist()
+    public bool addPatientToWaitlist(Patient admittedPatient)
     {
-        //Waitlist room
-        if (waitListSpace > waitList.Count)
+        //Waitlist has room
+        if (waitListSpace < waitList.Count)
         {
+            hospitalMetrics.handleHospitalWaitlist();
+            waitList.Add(admittedPatient);
             return true;
         }
+        //Waitlist full
         else
         {
             return false;
         }
     }
-    // Start is called before the first frame update
-    void Start()
+    public void patientReject(Patient rejectedPatient)
     {
-        
+        float deathChance = rejectedPatient.deathOnTurnDownRate;
+        //Patient dies
+        if(deathChance > Random.Range(0, 100)){
+            hospitalMetrics.handleRejectionDeath();
+        }
+        //Patient lives
+        else
+        {
+            hospitalMetrics.handleRejectionNorm();
+        }
     }
-
     // Update is called once per frame
     void Update()
     {
-        
+        if (waitList.Find(addPatientToRoom) != null)
+        {
+            //Display notification that patient has moved in
+        }
     }
 }

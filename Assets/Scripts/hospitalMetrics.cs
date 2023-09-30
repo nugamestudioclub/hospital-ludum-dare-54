@@ -7,13 +7,27 @@ public class hospitalMetrics : MonoBehaviour
     //Two Playerprefs are given
     //"Funds"
     //"Reputation"
-    #region
+    #region vars
     public const string fundsPrefAdress = "Funds";
     public const string reputationPrefAdress = "Reputation";
-    private int startingFunds;
-    private int startingReputation;
     private static int hospitalFunds = -20;
     private static int hospitalReputation = -20;
+    //Adjustable vars
+    [SerializeField]
+    private int startingFunds;
+    [SerializeField]
+    private int startingReputation;
+    //Reputation adjustments
+    [SerializeField]
+    private static int rejectionNormRep = -5;
+    [SerializeField]
+    private static int rejectionDeathRep = -25;
+    [SerializeField]
+    private static int hospitalDeathRep = -5;
+    [SerializeField]
+    private static int hospitalAdmitRep = 10;
+    [SerializeField]
+    private static int hospitalWaitlistRep = 5;
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -31,15 +45,34 @@ public class hospitalMetrics : MonoBehaviour
         }
     }
     //Helper edit functions
-    public void adjustFunds(int amount)
+    public static void adjustFunds(int amount)
     {
         hospitalFunds += amount;
     }
-    public void adjustReputation(int amount)
+    public static void adjustReputation(int amount)
     {
         hospitalReputation += amount;
     }
-
+    public static void handleRejectionNorm()
+    {
+        hospitalReputation += rejectionNormRep;
+    }
+    public static void handleRejectionDeath()
+    {
+        hospitalReputation += rejectionDeathRep;
+    }
+    public static void handleHospitalDeath()
+    {
+        hospitalReputation += hospitalDeathRep;
+    }
+    public static void handleHospitalAdmit()
+    {
+        hospitalReputation += hospitalAdmitRep;
+    }
+    public static void handleHospitalWaitlist()
+    {
+        hospitalReputation += hospitalWaitlistRep;
+    }
     // Update is called once per frame
     void Update()
     {
