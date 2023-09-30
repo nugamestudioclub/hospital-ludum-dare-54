@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class RoomSystem : MonoBehaviour
 {
     #region patientClass
@@ -38,8 +38,16 @@ public class RoomSystem : MonoBehaviour
     }
     #endregion
     #region roomClass
+    [SerializeField]
+    private static Color defaultColor = Color.white;
+    [SerializeField]
+    private static Color filledColor = Color.red;
     public class Room
     {
+        [SerializeField]
+        Image fillRepersent;
+        [SerializeField]
+        TMPro.TextMeshProUGUI timeLeftRepersent;
         [SerializeField]
         private Patient currentPatient;
         [SerializeField]
@@ -53,6 +61,11 @@ public class RoomSystem : MonoBehaviour
         public bool isOpen()
         {
             return empty;
+        }
+        public Room(Image correspondSymbol, TMPro.TextMeshProUGUI correspondText)
+        {
+            fillRepersent = correspondSymbol;
+            timeLeftRepersent = correspondText;
         }
         //returns false if patient cannot be admited
         public void admitPatient(Patient admitPat)
@@ -71,8 +84,11 @@ public class RoomSystem : MonoBehaviour
         }
         public void onUpdate()
         {
+
             if (!empty)
             {
+                timeLeftRepersent.text = "" + (Mathf.Round(countDownTime)) ;
+                fillRepersent.color = filledColor;
                 countDownTime -= Time.deltaTime;
                 //On surgery fix
                 if (countDownTime <= 0)
@@ -85,6 +101,10 @@ public class RoomSystem : MonoBehaviour
                     empty = true;
                 }
             }
+            else
+            {
+                fillRepersent.color = defaultColor;
+            }
         }
     }
     #endregion
@@ -95,6 +115,10 @@ public class RoomSystem : MonoBehaviour
     private int waitListSpace;
     [SerializeField]
     private int roomsAmount;
+    [SerializeField]
+    private Image[] roomRepersent;
+    [SerializeField]
+    private TMPro.TextMeshProUGUI[] timeRepersent;
     //Patients that will fill any rooms upon open spot
     private List<Patient> waitList = new List<Patient>();
     //Rooms avaliable
@@ -183,7 +207,7 @@ public class RoomSystem : MonoBehaviour
     {
         for(int i = 0; i < roomsAmount; i++)
         {
-            rooms.Add(new Room());
+            rooms.Add(new Room(roomRepersent[i], timeRepersent[i]));
         }
         /*
         Patient sabrina = new Patient("sabrina", "w", 3, 1);
