@@ -240,15 +240,18 @@ public class RoomSystem : MonoBehaviour
         if (waitList.Count > 0 && hasVacantRoom() != null )
         {
             //Display notification that patient has moved in
-            foreach (Patient pat in waitList)
+            foreach (Patient pat in waitList.ToArray())
             {
                 if (debug)
                 {
                     print("patient "+ pat.firstName + " moved in from waitlist");
                 }
-                if (!addPatientToRoom(pat))
+                if (addPatientToRoom(pat))
                 {
                     waitList.Remove(pat);
+                }
+                else
+                {
                     break;
                 }
             }
