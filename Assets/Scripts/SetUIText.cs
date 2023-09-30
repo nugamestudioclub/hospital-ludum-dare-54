@@ -137,7 +137,7 @@ public class SetUIText : MonoBehaviour
     public void SetValues(TextMeshProUGUI textMesh, string[] first, string[] last)
     {
         currentFirstName = first[UnityEngine.Random.Range(0, first.Length - 1)];
-        currentLastName = last[UnityEngine.Random.Range(0, first.Length - 1)];
+        currentLastName = last[UnityEngine.Random.Range(0, last.Length - 1)];
         textMesh.text = currentFirstName + ", " + currentLastName;
     }
 
