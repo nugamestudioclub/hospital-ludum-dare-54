@@ -182,6 +182,7 @@ public class RoomSystem : MonoBehaviour
         {
             rooms.Add(new Room());
         }
+        /*
         Patient sabrina = new Patient("sabrina", "w", 3, 1);
         Patient sabrina1 = new Patient("sabrina1", "w", 1, 1);
         Patient sabrina2 = new Patient("sabrina2", "w", 2, 1);
@@ -204,7 +205,7 @@ public class RoomSystem : MonoBehaviour
         addPatientToWaitlist(bob);
         addPatientToWaitlist(bob1);
         addPatientToWaitlist(bob2);
-        addPatientToWaitlist(bob3);
+        addPatientToWaitlist(bob3);*/
     }
     // Update is called once per frame
     void Update()
