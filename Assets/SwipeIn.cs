@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class SwipeIn : MonoBehaviour
 {
-
+    [SerializeField] private Clipboard _clipboard;
     [SerializeField] private Transform _startPoint;
     [SerializeField] private Transform _endPoint;
 
@@ -19,6 +19,13 @@ public class SwipeIn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _endPoint.position, 1000f * Time.deltaTime);
+        if (_clipboard._showClipboard == true)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, _endPoint.position, 1000f * Time.deltaTime);
+        }
+        else
+        {
+            transform.position = Vector3.MoveTowards(transform.position, _startPoint.position, 1000f * Time.deltaTime);
+        }
     }
 }
