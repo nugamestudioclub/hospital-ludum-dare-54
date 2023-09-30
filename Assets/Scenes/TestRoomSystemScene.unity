@@ -235,7 +235,6 @@ GameObject:
   - component: {fileID: 841982784}
   - component: {fileID: 841982783}
   - component: {fileID: 841982782}
-  - component: {fileID: 841982786}
   - component: {fileID: 841982785}
   m_Layer: 0
   m_Name: Main Camera
@@ -330,23 +329,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ab4317c8f774c84be7e1593a1d8913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 1
   waitListSpace: 5
   roomsAmount: 5
---- !u!114 &841982786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 841982781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 358836bbf8e55416983a97dc6a058a28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  empty: 0
-  countDownTime: 0
-  willFail: 0
 --- !u!1 &1888102665
 GameObject:
   m_ObjectHideFlags: 0

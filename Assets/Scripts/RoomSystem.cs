@@ -23,7 +23,7 @@ public class RoomSystem : MonoBehaviour
         public float deathOnTurnDownRate;
         public int insuranceValue;
         //Constructor
-        Patient(string getFirst, string getLast, int getSeverity, int getInsuranceValue)
+        public Patient(string getFirst, string getLast, int getSeverity, int getInsuranceValue)
         {
             firstName = getFirst;
             lastName = getLast;
@@ -35,6 +35,8 @@ public class RoomSystem : MonoBehaviour
     }
     #endregion
     #region var
+    [SerializeField]
+    private bool debug;
     [SerializeField]
     private int waitListSpace;
     [SerializeField]
@@ -49,23 +51,36 @@ public class RoomSystem : MonoBehaviour
         return givenRoom.isOpen();
     }
     //Returns null if no vacant room is found
-    public int hasVacantRoom()
+    public Room hasVacantRoom()
     {
-        return rooms.FindIndex(isRoomEmpty);
+        if (rooms.Exists(isRoomEmpty))
+        {
+            return rooms.Find(isRoomEmpty);
+        }
+        else
+        {
+            return null;
+        }
     }
     //Attempts to add a patient to a unused room
     public bool addPatientToRoom(Patient admittedPatient)
     {
-        int getOpenIndex = hasVacantRoom();
+        Room getOpenRoom = hasVacantRoom();
         //Room Found
-        if (getOpenIndex != -1)
+        if (getOpenRoom != null)
         {
+            if (debug)
+            {
+                print(admittedPatient.firstName + " has moved into room");
+            }
+            getOpenRoom.admitPatient(admittedPatient);
             hospitalMetrics.handleHospitalAdmit();
             return true;
         }
         //Room Not found
         else
         {
+            print(admittedPatient.firstName + " has not moved into room");
             return false;
         }
     }
@@ -73,8 +88,12 @@ public class RoomSystem : MonoBehaviour
     public bool addPatientToWaitlist(Patient admittedPatient)
     {
         //Waitlist has room
-        if (waitListSpace < waitList.Count)
+        if (waitListSpace > waitList.Count)
         {
+            if (debug)
+            {
+                print(admittedPatient.firstName + " has moved into waitlist");
+            }
             hospitalMetrics.handleHospitalWaitlist();
             waitList.Add(admittedPatient);
             return true;
@@ -90,11 +109,19 @@ public class RoomSystem : MonoBehaviour
         float deathChance = rejectedPatient.deathOnTurnDownRate;
         //Patient dies
         if(deathChance > Random.Range(0, 100)){
+            if (debug)
+            {
+                print(rejectedPatient.firstName + " died while rejected");
+            }
             hospitalMetrics.handleRejectionDeath();
         }
         //Patient lives
         else
         {
+            if (debug)
+            {
+                print(rejectedPatient.firstName + " was fine when rejected");
+            }
             hospitalMetrics.handleRejectionNorm();
         }
     }
@@ -104,13 +131,42 @@ public class RoomSystem : MonoBehaviour
         {
             rooms.Add((Room)gameObject.AddComponent(typeof(Room)));
         }
+        //DEBUG TESTS
+        /*
+        Patient sabrinaPat = new Patient("Sabrina", "wow", 5, 1000);
+        Patient tomPat = new Patient("tom", "wow", 4, 1000);
+        Patient matPat = new Patient("mat", "wow", 3, 1000);
+        Patient werPat = new Patient("wer", "wow", 2, 1000);
+        Patient amPat = new Patient("am", "wow", 1, 1000);
+        Patient teetPat = new Patient("teet", "wow", 3, 1000);
+        Patient boewPat = new Patient("boew", "wow", 2, 1000);
+        Patient catPat = new Patient("cat", "wow", 1, 1000);
+        addPatientToRoom(sabrinaPat);
+        addPatientToRoom(tomPat);
+        addPatientToRoom(matPat);
+        addPatientToRoom(werPat);
+        addPatientToRoom(amPat);
+        addPatientToWaitlist(teetPat);
+        addPatientToWaitlist(boewPat);
+        addPatientToWaitlist(catPat);*/
     }
     // Update is called once per frame
     void Update()
     {
-        if (waitList.Find(addPatientToRoom) != null)
+        if (waitList.Count > 0 && hasVacantRoom() != null )
         {
+            if (debug)
+            {
+                print("Waitlist patient moved in");
+            }
             //Display notification that patient has moved in
+            foreach (Patient pat in waitList)
+            {
+                if (!addPatientToRoom(pat))
+                {
+                    break;
+                }
+            }
         }
     }
 }

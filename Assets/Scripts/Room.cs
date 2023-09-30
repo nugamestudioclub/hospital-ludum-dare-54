@@ -7,7 +7,7 @@ public class Room : MonoBehaviour
     [SerializeField]
     private RoomSystem.Patient currentPatient;
     [SerializeField]
-    private bool empty;
+    private bool empty = true;
     //Time until patient is fixed
     [SerializeField]
     private float countDownTime;
@@ -41,17 +41,19 @@ public class Room : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        countDownTime -= Time.deltaTime;
-        //On surgery fix
-        if(countDownTime <= 0)
+        if (!empty)
         {
-            if (willFail)
+            countDownTime -= Time.deltaTime;
+            //On surgery fix
+            if (countDownTime <= 0)
             {
-                hospitalMetrics.handleHospitalDeath();
-                print("Had Died");
-            }
-            currentPatient = null;
-            empty = true;
+                if (willFail)
+                {
+                    hospitalMetrics.handleHospitalDeath();
+                    print("Had Died");
+                }
+                empty = true;
+            }  
         }
     }
 }
