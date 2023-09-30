@@ -148,4 +148,8 @@ public class SetUIText : MonoBehaviour
         textMesh.text = text;
     }
 
+    private void Start()
+    {
+        SetText();
+    }
 }

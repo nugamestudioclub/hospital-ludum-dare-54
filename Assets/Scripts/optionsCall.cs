@@ -8,6 +8,7 @@ public class optionsCall : MonoBehaviour
     //Transfers text
     RoomSystem system;
     SetUIText getInfo;
+    ChangePatientImage getImage;
     Patient currentPatient;
     public void setPatient(Patient getPatient) {
         currentPatient = getPatient;
@@ -18,6 +19,7 @@ public class optionsCall : MonoBehaviour
         currentPatient = getInfo.getPatient();
         system.patientReject(currentPatient);
         getInfo.SetText();
+        getImage.ChangeImage();
     }
     public void callAccept()
     {
@@ -25,6 +27,7 @@ public class optionsCall : MonoBehaviour
         if (system.addPatientToRoom(currentPatient))
         {
             getInfo.SetText();
+            getImage.ChangeImage();
         }
         else
         {
@@ -37,6 +40,7 @@ public class optionsCall : MonoBehaviour
         if (system.addPatientToWaitlist(currentPatient))
         {
             getInfo.SetText();
+            getImage.ChangeImage();
         }
         else
         {
@@ -45,6 +49,7 @@ public class optionsCall : MonoBehaviour
     }
     private void Start()
     {
+        getImage = GetComponent<ChangePatientImage>(); 
         getInfo = GetComponent<SetUIText>();
         system = FindAnyObjectByType<RoomSystem>();
         currentPatient = new Patient("null pat", "null pat", new SetUIText.injury("null", 0), new SetUIText.insurance("null", 0));

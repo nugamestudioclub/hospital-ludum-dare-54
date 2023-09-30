@@ -41,7 +41,7 @@ public class RoomSystem : MonoBehaviour
     public class Room
     {
         [SerializeField]
-        private Patient currentPatient = new Patient("null pat", "null pat", new SetUIText.injury("null", 0), new SetUIText.insurance("null", 0));
+        private Patient currentPatient;
         [SerializeField]
         private bool empty = true;
         //Time until patient is fixed
