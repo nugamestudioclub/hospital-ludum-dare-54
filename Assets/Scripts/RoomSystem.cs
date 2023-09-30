@@ -6,11 +6,11 @@ public class RoomSystem : MonoBehaviour
 {
     #region patientClass
     [SerializeField]
-    private static float severityToTimeRatio = 20;
+    private static float severityToTimeRatio = 5;
     [SerializeField]
-    private static float severityToFailRatio = 7;
+    private static float severityToFailRatio = 1;
     [SerializeField]
-    private static float severityToDieOnTurndown = 7;
+    private static float severityToDieOnTurndown = 1;
     //Patient class used to store information to be processed into rooms
     public class Patient 
     {
@@ -31,6 +31,57 @@ public class RoomSystem : MonoBehaviour
             fixTime = getSeverity * severityToTimeRatio;
             failRatio = getSeverity * severityToFailRatio;
             deathOnTurnDownRate = getSeverity * severityToDieOnTurndown;
+        }
+    }
+    #endregion
+    #region roomClass
+    public class Room
+    {
+        [SerializeField]
+        private Patient currentPatient = new Patient("null pat", "null pat", 0, 0);
+        [SerializeField]
+        private bool empty = true;
+        //Time until patient is fixed
+        [SerializeField]
+        private float countDownTime;
+        //Calculates upon recieving patient
+        [SerializeField]
+        private bool willFail;
+        public bool isOpen()
+        {
+            return empty;
+        }
+        //returns false if patient cannot be admited
+        public void admitPatient(Patient admitPat)
+        {
+            if (empty)
+            {
+                empty = false;
+                currentPatient = admitPat;
+                countDownTime = admitPat.fixTime;
+                willFail = admitPat.failRatio > Random.Range(0, 100);
+            }
+            else
+            {
+                print("ERROR: --a patient has been admitted to a full room, check Room--");
+            }
+        }
+        public void onUpdate()
+        {
+            if (!empty)
+            {
+                countDownTime -= Time.deltaTime;
+                //On surgery fix
+                if (countDownTime <= 0)
+                {
+                    if (willFail)
+                    {
+                        hospitalMetrics.handleHospitalDeath();
+                        print("Had Died");
+                    }
+                    empty = true;
+                }
+            }
         }
     }
     #endregion
@@ -129,44 +180,54 @@ public class RoomSystem : MonoBehaviour
     {
         for(int i = 0; i < roomsAmount; i++)
         {
-            rooms.Add((Room)gameObject.AddComponent(typeof(Room)));
+            rooms.Add(new Room());
         }
-        //DEBUG TESTS
-        /*
-        Patient sabrinaPat = new Patient("Sabrina", "wow", 5, 1000);
-        Patient tomPat = new Patient("tom", "wow", 4, 1000);
-        Patient matPat = new Patient("mat", "wow", 3, 1000);
-        Patient werPat = new Patient("wer", "wow", 2, 1000);
-        Patient amPat = new Patient("am", "wow", 1, 1000);
-        Patient teetPat = new Patient("teet", "wow", 3, 1000);
-        Patient boewPat = new Patient("boew", "wow", 2, 1000);
-        Patient catPat = new Patient("cat", "wow", 1, 1000);
-        addPatientToRoom(sabrinaPat);
-        addPatientToRoom(tomPat);
-        addPatientToRoom(matPat);
-        addPatientToRoom(werPat);
-        addPatientToRoom(amPat);
-        addPatientToWaitlist(teetPat);
-        addPatientToWaitlist(boewPat);
-        addPatientToWaitlist(catPat);*/
+        Patient sabrina = new Patient("sabrina", "w", 3, 1);
+        Patient sabrina1 = new Patient("sabrina1", "w", 1, 1);
+        Patient sabrina2 = new Patient("sabrina2", "w", 2, 1);
+        Patient sabrina3 = new Patient("sabrina3", "w", 5, 1);
+        Patient sabrina4 = new Patient("sabrina4", "w", 6, 1);
+        Patient sabrina5 = new Patient("sabrina5", "w", 4, 1);
+        Patient sabrina6 = new Patient("sabrina6", "w", 3, 1);
+        Patient sabrina7 = new Patient("sabrina7", "w", 1, 1);
+        Patient sabrina8 = new Patient("sabrina8", "w", 2, 1);
+        Patient bob = new Patient("bob", "w", 5, 1);
+        Patient bob1 = new Patient("bob1", "w", 5, 1);
+        Patient bob2 = new Patient("bob2", "w", 5, 1);
+        Patient bob3 = new Patient("bob3", "w", 5, 1);
+        addPatientToRoom(sabrina);
+        addPatientToRoom(sabrina1);
+        addPatientToRoom(sabrina2);
+        addPatientToRoom(sabrina3);
+        addPatientToRoom(sabrina4);
+        addPatientToRoom(sabrina5);
+        addPatientToWaitlist(bob);
+        addPatientToWaitlist(bob1);
+        addPatientToWaitlist(bob2);
+        addPatientToWaitlist(bob3);
     }
     // Update is called once per frame
     void Update()
     {
         if (waitList.Count > 0 && hasVacantRoom() != null )
         {
-            if (debug)
-            {
-                print("Waitlist patient moved in");
-            }
             //Display notification that patient has moved in
             foreach (Patient pat in waitList)
             {
+                if (debug)
+                {
+                    print("patient "+ pat.firstName + " moved in from waitlist");
+                }
                 if (!addPatientToRoom(pat))
                 {
+                    waitList.Remove(pat);
                     break;
                 }
             }
+        }
+        foreach (Room room in rooms)
+        {
+            room.onUpdate();
         }
     }
 }

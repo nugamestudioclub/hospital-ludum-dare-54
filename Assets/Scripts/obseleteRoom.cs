@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Room : MonoBehaviour
+public class obseleteRoom : MonoBehaviour
 {
     [SerializeField]
     private RoomSystem.Patient currentPatient;
