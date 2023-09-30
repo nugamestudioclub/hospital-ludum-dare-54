@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,7 +9,14 @@ public class SetUIText : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _name;
     [SerializeField] private TextMeshProUGUI _insurance;
     [SerializeField] private TextMeshProUGUI _injury;
-
+    [SerializeField]
+    private string firstName;
+    [SerializeField]
+    private string lastName;
+    [SerializeField]
+    private string injury;
+    [SerializeField]
+    string insurance;
     private string[] _firstNames = new string[]
     { "Sam", "Jamie", "Blake", "Avery", "Parker", "Riley", "Rowan","James", "Rory", "Logan", "Ryan", "Frankie", "Aubrey", "Alexis", "Morgan",
       "Liam", "Johnny", "Colin", "Clemence", "Allen", "Alec", "Shane", "Isabella", "Russell", "Aliyah", "Bobby", "Stacy", "Mo", "Michael",
@@ -20,8 +28,8 @@ public class SetUIText : MonoBehaviour
     private string[] _lastNames = new string[]
     {
     "Johnson", "Smith", "Green", "Black", "Brown", "White", "Gordon", "Morgan", "Obama", "Fowler", "Murphy", "McGraw", "Ferrell", "Layton",
-    "Washington", "Simpson", "Otto", "Oliver", "Phillips", "Allen", "Hill", "Lewis", "Carmen", "O’Hara", "Gibbs", "Bell", "Hernandez",
-    "Safdie", "King", "Dano", "Hawke", "Lawrence", "Mooney", "Norton", "Bailey", "Neville", "Lane", "Miller", "Sanders", "O’Brien",
+    "Washington", "Simpson", "Otto", "Oliver", "Phillips", "Allen", "Hill", "Lewis", "Carmen", "Oï¿½Hara", "Gibbs", "Bell", "Hernandez",
+    "Safdie", "King", "Dano", "Hawke", "Lawrence", "Mooney", "Norton", "Bailey", "Neville", "Lane", "Miller", "Sanders", "Oï¿½Brien",
     "McDonald", "Jordan", "Peterson", "Sanchez", "Huang", "Anderson", "Aarons"
     };
 
@@ -46,20 +54,24 @@ public class SetUIText : MonoBehaviour
     public void SetText()
     {
         SetValues(_name, _firstNames, _lastNames);
-        SetValues(_insurance, _insurances);
-        SetValues(_injury, _injuries);
+        insurance = _insurances[UnityEngine.Random.Range(0, _insurances.Length - 1)];
+        SetValues(_insurance, insurance);
+        injury = _injuries[UnityEngine.Random.Range(0, _injuries.Length - 1)];
+        SetValues(_injury, injury);
     }
 
     // for the name
     public void SetValues(TextMeshProUGUI textMesh, string[] first, string[] last)
     {
-        textMesh.text = first[Random.Range(0, first.Length - 1)] + ", " + last[Random.Range(0, last.Length - 1)];
+        firstName = first[UnityEngine.Random.Range(0, first.Length - 1)];
+        lastName = last[UnityEngine.Random.Range(0, first.Length - 1)];
+        textMesh.text = firstName + ", " + lastName;
     }
 
     // for everything else
-    public void SetValues(TextMeshProUGUI textMesh, string[] array)
+    public void SetValues(TextMeshProUGUI textMesh, string text)
     {
-        textMesh.text = array[Random.Range(0, array.Length - 1)];
+        textMesh.text = text;
     }
 
 }
