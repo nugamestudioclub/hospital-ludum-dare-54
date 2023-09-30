@@ -2203,9 +2203,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bec093871305aec43bf87759ae0b98bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: {fileID: 1145151134}
-  _insurance: {fileID: 132592566}
-  _injury: {fileID: 1302024822}
+  _name: {fileID: 923992763}
+  _insurance: {fileID: 1068008614}
+  _injury: {fileID: 798213382}
   currentFirstName: 
   currentLastName: 
 --- !u!1 &1711733120
