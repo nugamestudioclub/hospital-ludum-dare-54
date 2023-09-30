@@ -10,23 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a18ff817c236ae5419d49e96268058d8, type: 3}
-  m_Name: New Patient SO
+  m_Name: PatientInfo
   m_EditorClassIdentifier: 
   firstNames:
   - Kevin
   - Larry
   - Bobert
   - Josephi
+  - Bob
+  - Carl
+  - Will
+  - Will
   lastNames:
   - Johnson
   - Carlson
   - Stevenson
+  - Smith
+  - Hunting
   insurances:
   - Purple Cross Purple Shield
   - Sigma
   - Panthem
+  - HeartCare
+  - GIVEUSYOURMONEY
   injuries:
   - Broken Leg
   - Brain Bleed
   - Muscle Death
   - Aneurysm
+  - Concussion
+  - Bone Fracture
