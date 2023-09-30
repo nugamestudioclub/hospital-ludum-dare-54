@@ -9,8 +9,16 @@ public class ChangePatientImage : MonoBehaviour
 
     [SerializeField] private PatientSpritesSO _patientImagesSO;
 
+    private int _currentIndex;
+
     public void ChangeImage()
     {
-        _patientImage.sprite = _patientImagesSO.sprites[Random.Range(0, _patientImagesSO.sprites.Length-1)];
+        int randomIndex = Random.Range(0, _patientImagesSO.sprites.Length - 1);
+        while(randomIndex == _currentIndex)
+        {
+            randomIndex = Random.Range(0, _patientImagesSO.sprites.Length - 1);
+        }
+        _patientImage.sprite = _patientImagesSO.sprites[randomIndex];
+        _currentIndex = randomIndex;
     }
 }
