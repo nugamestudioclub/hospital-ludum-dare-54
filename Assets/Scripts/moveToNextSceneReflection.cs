@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class moveToNextSceneReflection : MonoBehaviour
 {
+    [SerializeField]
+    float timeLeft;
     bool hasPressed = false;
     [SerializeField]
     string nextSceneAddress;
@@ -15,9 +17,10 @@ public class moveToNextSceneReflection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timeLeft -= Time.deltaTime;
         if (!hasPressed)
         {
-            if (Input.anyKeyDown)
+            if (Input.anyKeyDown && timeLeft < 0)
             {
                 cacheImage.setActivate(true);
                 hasPressed = true;

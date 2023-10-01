@@ -7,6 +7,11 @@ public class NoteCardsSystem : MonoBehaviour
     //Deck
     [SerializeField]
     Notecard[] deck;
+    [SerializeField]
+    float[] timeLeft;
+    [SerializeField]
+    float timeStay;
+
     // Start is called before the first frame update
     void Start()
     {
