@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Clipboard : MonoBehaviour
 {
+    
     [SerializeField] private GameObject _clipboard;
 
     [HideInInspector]
