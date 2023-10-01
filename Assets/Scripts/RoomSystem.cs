@@ -4,13 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 public class RoomSystem : MonoBehaviour
 {
+    [SerializeField]
+    public static bool debug = true;
     #region patientClass
     [SerializeField]
     private static float severityToTimeRatio = 5;
     [SerializeField]
-    private static float severityToFailRatio = 1;
+    private static float severityToFailRatio = 10;
     [SerializeField]
-    private static float severityToDieOnTurndown = 1;
+    private static float severityToDieOnTurndown = 10;
     //Patient class used to store information to be processed into rooms
     public class Patient 
     {
@@ -96,7 +98,14 @@ public class RoomSystem : MonoBehaviour
                     if (willFail)
                     {
                         hospitalMetrics.handleHospitalDeath();
-                        print("Had Died");
+                        if (debug)
+                        {
+                            print("Had Died");
+                        }
+                    }
+                    else
+                    {
+                        hospitalMetrics.handleSuccess(currentPatient.insuranceValue);
                     }
                     empty = true;
                 }
@@ -109,8 +118,6 @@ public class RoomSystem : MonoBehaviour
     }
     #endregion
     #region var
-    [SerializeField]
-    private bool debug;
     [SerializeField]
     private int waitListSpace;
     [SerializeField]

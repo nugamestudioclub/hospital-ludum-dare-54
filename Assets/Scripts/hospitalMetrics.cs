@@ -18,8 +18,6 @@ public class hospitalMetrics : MonoBehaviour
     [SerializeField]
     private TMPro.TextMeshProUGUI reputationText;
     [SerializeField]
-    private GameObject effectPrefab;
-    [SerializeField]
     private int startingFunds;
     [SerializeField]
     private int startingReputation;
@@ -54,26 +52,10 @@ public class hospitalMetrics : MonoBehaviour
     private static void adjustFunds(int amount)
     {
         hospitalFunds += amount;
-        if (amount > 0)
-        {
-            //Signify increase
-        }
-        else if (amount < 0)
-        {
-            //Signify loss
-        }
     }
     private static void adjustReputation(int amount)
     {
         hospitalReputation += amount;
-        if(amount > 0)
-        {
-            //Signify increase
-        }
-        else if(amount < 0)
-        {
-            //Signify loss
-        }
     }
     public static void handleRejectionNorm()
     {
@@ -94,6 +76,10 @@ public class hospitalMetrics : MonoBehaviour
     public static void handleHospitalWaitlist()
     {
         adjustReputation(hospitalWaitlistRep);
+    }
+    public static void handleSuccess(int insuranceValue)
+    {
+        adjustFunds(insuranceValue);
     }
     // Update is called once per frame
     void Update()
