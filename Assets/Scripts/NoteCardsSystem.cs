@@ -18,14 +18,14 @@ public class NoteCardsSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        deck = transform.GetComponentsInChildren<Notecard>();
     }
     public bool displayMessage(string message)
     {
         bool existsActive = false;
         for(int i = 0; i < deck.Length; i++)
         {
-            if (activated[i])
+            if (!activated[i])
             {
                 existsActive = true;
                 deck[i].showNotecard(message);

@@ -12,7 +12,7 @@ public class Notecard : MonoBehaviour
 {
     [SerializeField] private GameObject note;
     [SerializeField] private GameObject _notecard;
-    public Text text;
+    public TMPro.TextMeshProUGUI text;
 
     [HideInInspector]
     public bool _showNotecard = false;

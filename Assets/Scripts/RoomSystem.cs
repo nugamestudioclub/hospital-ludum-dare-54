@@ -225,7 +225,10 @@ public class RoomSystem : MonoBehaviour
             {
                 print(rejectedPatient.firstName + " died while rejected");
             }
-            cacheNotes.displayMessage(rejectedPatient.firstName + " died while rejected");
+            if(!cacheNotes.displayMessage(rejectedPatient.firstName + " died while rejected"))
+            {
+                print("notecard fail");  
+            }
             hospitalMetrics.handleRejectionDeath();
         }
         //Patient lives
