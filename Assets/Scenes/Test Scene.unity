@@ -2121,7 +2121,7 @@ GameObject:
   - component: {fileID: 964660656}
   - component: {fileID: 964660655}
   m_Layer: 5
-  m_Name: Background (1)
+  m_Name: Note Card Popup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2143,7 +2143,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -320, y: 205}
+  m_AnchoredPosition: {x: -324, y: 212}
   m_SizeDelta: {x: 294, y: 87}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &964660655
@@ -3808,6 +3808,7 @@ GameObject:
   - component: {fileID: 2033889739}
   - component: {fileID: 2033889738}
   - component: {fileID: 2033889740}
+  - component: {fileID: 2033889741}
   m_Layer: 5
   m_Name: Patient Image
   m_TagString: Untagged
@@ -3888,6 +3889,21 @@ MonoBehaviour:
   _scaleFactorY: 0.9
   _scaleFactorX: 1.05
   _duration: 0.5
+--- !u!114 &2033889741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033889736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af865e9775ab6104dadf3b674aff7ba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageToFade: {fileID: 2033889738}
+  fadeDuration: 50
+  targetColor: {r: 1, g: 0.5019608, b: 0.5019608, a: 1}
 --- !u!1 &2089884975
 GameObject:
   m_ObjectHideFlags: 0
