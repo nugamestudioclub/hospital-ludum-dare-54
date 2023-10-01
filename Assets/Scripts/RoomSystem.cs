@@ -55,7 +55,6 @@ public class RoomSystem : MonoBehaviour
     private static Color filledColor = Color.white;
     public class Room
     {
-      
         [SerializeField]
         public Image fillRepersent;
         [SerializeField]
@@ -142,6 +141,8 @@ public class RoomSystem : MonoBehaviour
     #endregion
     #region var
     [SerializeField]
+    private NoteCardsSystem cacheNotes;
+    [SerializeField]
     private int waitListSpace;
     [SerializeField]
     private int roomsAmount;
@@ -224,6 +225,7 @@ public class RoomSystem : MonoBehaviour
             {
                 print(rejectedPatient.firstName + " died while rejected");
             }
+            
             hospitalMetrics.handleRejectionDeath();
         }
         //Patient lives
@@ -238,6 +240,7 @@ public class RoomSystem : MonoBehaviour
     }
     void Start()
     {
+        cacheNotes = FindAnyObjectByType<NoteCardsSystem>();
         for(int i = 0; i < roomsAmount; i++)
         {
             rooms.Add(new Room(roomRepersent[i], timeRepersent[i], vacant, sick, healthy, dead));

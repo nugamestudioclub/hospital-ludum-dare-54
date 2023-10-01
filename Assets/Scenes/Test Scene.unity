@@ -7342,12 +7342,12 @@ RectTransform:
   - {fileID: 863018184}
   - {fileID: 508056501}
   - {fileID: 340590027}
+  - {fileID: 1895836976}
+  - {fileID: 1633209024}
   - {fileID: 456401005}
   - {fileID: 298006697}
   - {fileID: 1885063848}
   - {fileID: 2097762364}
-  - {fileID: 1895836976}
-  - {fileID: 1633209024}
   m_Father: {fileID: 627421063}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -7367,10 +7367,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0bf3c8ade5ff48f4a5c8eb8387c37ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deck: []
-  activated: 
-  timeLeft: []
-  timeStay: 0
+  deck:
+  - {fileID: 964660657}
+  - {fileID: 1450657107}
+  - {fileID: 994513060}
+  - {fileID: 863018185}
+  - {fileID: 508056502}
+  - {fileID: 340590028}
+  - {fileID: 1895836977}
+  - {fileID: 1633209025}
+  - {fileID: 456401006}
+  - {fileID: 298006698}
+  - {fileID: 1885063849}
+  - {fileID: 2097762365}
+  activated: 0000000000000000000000
+  timeLeft:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  timeStay: 5
 --- !u!1 &2129554117
 GameObject:
   m_ObjectHideFlags: 0
