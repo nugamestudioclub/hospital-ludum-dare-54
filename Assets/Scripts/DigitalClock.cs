@@ -8,6 +8,8 @@ public class DigitalClock : MonoBehaviour
 {
     [SerializeField]
     private imageFadeInFadeOut cacheTransitionImage;
+    [SerializeField]
+    private GameObject cacheTransitionGameobject;
     public TMP_Text textTimer;
     [SerializeField]
     private float time;
@@ -19,14 +21,15 @@ public class DigitalClock : MonoBehaviour
     private string gameEndScene;
     [SerializeField]
     private static int lastDay;
+    [SerializeField]
+    private bool hasEnded;
     private bool isWorking = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        //create a randomize time as well as assign time for the sticky note
-        time = 60f;
-        endTime = time + 300.0f;
+        cacheTransitionGameobject.SetActive(false);
+        cacheTransitionImage = cacheTransitionGameobject.GetComponent<imageFadeInFadeOut>();
     }
 
     // Update is called once per frame
@@ -41,6 +44,20 @@ public class DigitalClock : MonoBehaviour
         else
         {
             this.enabled = false;
+        }
+        if (hasEnded)
+        {
+            if (cacheTransitionImage.getComplete())
+            {
+                if (hospitalMetrics.getDays() >= lastDay)
+                {
+                    SceneManager.LoadScene(gameEndScene);
+                }
+                else
+                {
+                    SceneManager.LoadScene(dayEndScene);
+                }
+            }
         }
     }
 
@@ -57,14 +74,9 @@ public class DigitalClock : MonoBehaviour
         {
             isWorking = false;
             Debug.Log("End Day");
-            if(hospitalMetrics.getDays() >= lastDay)
-            {
-                SceneManager.LoadScene(gameEndScene);
-            }
-            else
-            {
-                SceneManager.LoadScene(dayEndScene);
-            }
+            hasEnded = true;
+            cacheTransitionGameobject.SetActive(true);
+            cacheTransitionImage.setActivate(true);
             
             //go to next scene and show stats
         }
