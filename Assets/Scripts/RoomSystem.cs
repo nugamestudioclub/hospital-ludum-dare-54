@@ -43,11 +43,11 @@ public class RoomSystem : MonoBehaviour
     [SerializeField]
     private static Color defaultColor = Color.white;
     [SerializeField]
-    private static Color filledColor = Color.red;
+    private static Color filledColor = Color.white;
     public class Room
     {
         [SerializeField]
-        Image fillRepersent;
+        public Image fillRepersent;
         [SerializeField]
         TMPro.TextMeshProUGUI timeLeftRepersent;
         [SerializeField]
@@ -60,6 +60,12 @@ public class RoomSystem : MonoBehaviour
         //Calculates upon recieving patient
         [SerializeField]
         private bool willFail;
+
+        Sprite vacent = Resources.Load<Sprite>("room_icon4");
+        Sprite sick = Resources.Load<Sprite>("room_icon3");
+        Sprite healthy = Resources.Load<Sprite>("room_icon2");
+        Sprite dead = Resources.Load<Sprite>("room_icon1");
+
         public bool isOpen()
         {
             return empty;
@@ -74,6 +80,7 @@ public class RoomSystem : MonoBehaviour
         {
             if (empty)
             {
+                fillRepersent.GetComponent<Image>().sprite = sick;
                 empty = false;
                 currentPatient = admitPat;
                 countDownTime = admitPat.fixTime;
@@ -97,6 +104,7 @@ public class RoomSystem : MonoBehaviour
                 {
                     if (willFail)
                     {
+                        fillRepersent.GetComponent<Image>().sprite = dead;
                         hospitalMetrics.handleHospitalDeath();
                         if (debug)
                         {
@@ -105,6 +113,7 @@ public class RoomSystem : MonoBehaviour
                     }
                     else
                     {
+                        fillRepersent.GetComponent<Image>().sprite = vacent;
                         print(currentPatient.firstName + "has survived and paid out $" + currentPatient.insuranceValue + " from " + currentPatient.insuranceName);
                         hospitalMetrics.handleSuccess(currentPatient.insuranceValue);
                     }
