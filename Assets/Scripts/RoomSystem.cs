@@ -45,6 +45,8 @@ public class RoomSystem : MonoBehaviour
             fixTime = getInjury.severity * severityToTimeRatio;
             failRatio = getInjury.severity * severityToFailRatio;
             deathOnTurnDownRate = getInjury.severity * severityToDieOnTurndown;
+            insuranceName = getInsurance.name;
+            injuryName = getInjury.name;
         }
     }
     #endregion
@@ -123,10 +125,22 @@ public class RoomSystem : MonoBehaviour
                         {
                             print(currentPatient.firstName + "has died in room");
                         }
+                        if (!FindAnyObjectByType<NoteCardsSystem>().displayMessage(currentPatient.firstName + " has died in the room"))
+                        {
+                            print("notecard fail");
+                        }
                     }
                     else
                     {
-                        print(currentPatient.firstName + "has survived and paid out $" + currentPatient.insuranceValue + " from " + currentPatient.insuranceName);
+                        if (!FindAnyObjectByType<NoteCardsSystem>().displayMessage(currentPatient.firstName + "has survived and paid out $" + currentPatient.insuranceValue + " from " + currentPatient.insuranceName))
+                        {
+                            print("notecard fail");
+                        }
+                        if (debug)
+                        {
+                            print(currentPatient.firstName + "has survived and paid out $" + currentPatient.insuranceValue + " from " + currentPatient.insuranceName);
+                        }
+                      
                         hospitalMetrics.handleSuccess(currentPatient.insuranceValue);
                     }
                     empty = true;
