@@ -17,7 +17,7 @@ public class moveToNextSceneReflection : MonoBehaviour
     {
         if (!hasPressed)
         {
-            if (Input.anyKey)
+            if (Input.anyKeyDown)
             {
                 cacheImage.setActivate(true);
                 hasPressed = true;

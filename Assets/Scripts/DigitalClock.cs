@@ -6,10 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class DigitalClock : MonoBehaviour
 {
+    [SerializeField]
+    private imageFadeInFadeOut cacheTransitionImage;
     public TMP_Text textTimer;
-
-    private float time = 0.0f;
+    [SerializeField]
+    private float time;
+    [SerializeField]
     private float endTime;
+    [SerializeField]
+    private string dayEndScene;
+    [SerializeField]
+    private string gameEndScene;
+    [SerializeField]
+    private static int lastDay;
     private bool isWorking = true;
 
     // Start is called before the first frame update
@@ -48,7 +57,15 @@ public class DigitalClock : MonoBehaviour
         {
             isWorking = false;
             Debug.Log("End Day");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            if(hospitalMetrics.getDays() >= lastDay)
+            {
+                SceneManager.LoadScene(gameEndScene);
+            }
+            else
+            {
+                SceneManager.LoadScene(dayEndScene);
+            }
+            
             //go to next scene and show stats
         }
         else
