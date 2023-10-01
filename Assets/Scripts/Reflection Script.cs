@@ -7,7 +7,7 @@ public class ReflectionScript : MonoBehaviour
     [SerializeField]
     private float timeOnEachPress;
     [SerializeField]
-    private float timeLeftPress = 0;
+    private float timeLeftPress;
     [SerializeField]
     private TMPro.TextMeshProUGUI display;
     private string[] displayText;
@@ -23,6 +23,7 @@ public class ReflectionScript : MonoBehaviour
     {
         timeLeftPress = timeOnEachPress;
         displayText = new string[] {
+            "DAY " + hospitalMetrics.getDays(),
             "REFLECTION"
         };
     }

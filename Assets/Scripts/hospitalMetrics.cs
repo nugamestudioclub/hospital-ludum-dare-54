@@ -15,6 +15,7 @@ public class hospitalMetrics : MonoBehaviour
     private static int hospitalReputation = -20;
     private static int hospitalStartingReputation = 0;
     private static int hospitalDeaths = 0;
+    private static int currentDay = 0;
     //Adjustable vars
     [SerializeField]
     private TMPro.TextMeshProUGUI fundsText;
@@ -39,6 +40,7 @@ public class hospitalMetrics : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentDay++;
         hospitalDeaths = 0;
         //Finds if Funds and reputation have been defined
         //Funds have not been defined
@@ -109,6 +111,10 @@ public class hospitalMetrics : MonoBehaviour
     public static int getDeaths()
     {
         return hospitalDeaths;
+    }
+    public static int getDays()
+    {
+        return currentDay;
     }
     // Update is called once per frame
     void Update()
