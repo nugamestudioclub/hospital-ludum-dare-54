@@ -30,7 +30,7 @@ public class imageFadeInFadeOut : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!complete)
+        if (!complete && activated)
         {
             if (fadeIn)
             {
