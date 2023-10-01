@@ -41,20 +41,19 @@ public class DigitalClock : MonoBehaviour
             DisplayTime();
             isDayOver(time, endTime);
         }
-        else
-        {
-            this.enabled = false;
-        }
         if (hasEnded)
         {
+            print("wow");
             if (cacheTransitionImage.getComplete())
             {
                 if (hospitalMetrics.getDays() >= lastDay)
                 {
+                    print("wow");
                     SceneManager.LoadScene(gameEndScene);
                 }
                 else
                 {
+                    print("wodw");
                     SceneManager.LoadScene(dayEndScene);
                 }
             }
@@ -73,7 +72,6 @@ public class DigitalClock : MonoBehaviour
         if (actualTime >= quitingTime)
         {
             isWorking = false;
-            Debug.Log("End Day");
             hasEnded = true;
             cacheTransitionGameobject.SetActive(true);
             cacheTransitionImage.setActivate(true);
