@@ -37,7 +37,7 @@ public class DigitalClock : MonoBehaviour
     {
         if (isWorking)
         {
-            time += Time.deltaTime * 10;
+            time += Time.deltaTime;
             DisplayTime();
             isDayOver(time, endTime);
         }

@@ -119,7 +119,7 @@ public class hospitalMetrics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        fundsText.text = "Funds:<br>" + Mathf.Round(hospitalFunds);
-        reputationText.text = "Reputation:<br>" + Mathf.Round(hospitalReputation);
+        fundsText.text = "Funds:" + Mathf.Round(hospitalFunds);
+        reputationText.text = "Reputation:" + Mathf.Round(hospitalReputation);
     }
 }
