@@ -65,9 +65,9 @@ public class SetUIText : MonoBehaviour
 
     private insurance[] _insurances = new insurance[]
     {
-    new insurance("Kaiser Roll Permanente", 4000),
+    new insurance("K.Permanente", 4000),
     new insurance("Smiles Inc.", 3500),
-    new insurance("MidCare Health", 3000),
+    new insurance("MidCare", 3000),
     new insurance("Lowmark Inc.", 2500),
     new insurance("John & Son", 2000),
     new insurance("Cigma Nuts", 1500),
@@ -128,7 +128,7 @@ public class SetUIText : MonoBehaviour
     {
         SetValues(_name, _firstNames, _lastNames);
         currentInsurance = _insurances[UnityEngine.Random.Range(0, _insurances.Length - 1)];
-        SetValues(_insurance, currentInsurance.ToString() + " ( $" + currentInsurance +" )" );
+        SetValues(_insurance, currentInsurance.ToString() + "<br>$" + currentInsurance.value);
         currentInjury = _injuries[UnityEngine.Random.Range(0, _injuries.Length - 1)];
         SetValues(_injury, currentInjury.ToString());
     }
