@@ -12,6 +12,7 @@ public class hospitalMetrics : MonoBehaviour
     public const string reputationPrefAdress = "Reputation";
     private static int hospitalFunds = -20;
     private static int hospitalReputation = -20;
+    private static int hospitalDeaths = 0;
     //Adjustable vars
     [SerializeField]
     private TMPro.TextMeshProUGUI fundsText;
@@ -64,10 +65,12 @@ public class hospitalMetrics : MonoBehaviour
     public static void handleRejectionDeath()
     {
         adjustReputation(rejectionDeathRep);
+        hospitalDeaths++;
     }
     public static void handleHospitalDeath()
     {
         adjustReputation(hospitalDeathRep);
+        hospitalDeaths++;
     }
     public static void handleHospitalAdmit()
     {
@@ -81,10 +84,23 @@ public class hospitalMetrics : MonoBehaviour
     {
         adjustFunds(insuranceValue);
     }
+    //Get/Set functions
+    public static int getFunds()
+    {
+        return hospitalFunds;
+    }
+    public static int getRep()
+    {
+        return hospitalReputation;
+    }
+    public static int getDeaths()
+    {
+        return hospitalDeaths;
+    }
     // Update is called once per frame
     void Update()
     {
-        fundsText.text = "Funds: " + Mathf.Round(hospitalFunds);
-        reputationText.text = "Reputation: " + Mathf.Round(hospitalReputation);
+        fundsText.text = "Funds:<br>" + Mathf.Round(hospitalFunds);
+        reputationText.text = "Reputation:<br>" + Mathf.Round(hospitalReputation);
     }
 }

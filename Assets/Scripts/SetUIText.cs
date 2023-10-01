@@ -65,7 +65,7 @@ public class SetUIText : MonoBehaviour
 
     private insurance[] _insurances = new insurance[]
     {
-    new insurance("K.Permanente", 4000),
+    new insurance("K. Permanente", 4000),
     new insurance("Smiles Inc.", 3500),
     new insurance("MidCare", 3000),
     new insurance("Lowmark Inc.", 2500),
