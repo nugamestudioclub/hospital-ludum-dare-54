@@ -13,14 +13,14 @@ public class RoomSystem : MonoBehaviour
     private static float severityToFailRatio = 10;
     [SerializeField]
     private static float severityToDieOnTurndown = 10;
-  //  [SerializeField]
-  //  public Sprite vacant;
-  //  [SerializeField]
-  //  public Sprite sick;
-  //  [SerializeField]
-  //  public Sprite healthy;
-  //  [SerializeField]
-  //  public Sprite dead;
+    [SerializeField]
+    public Sprite vacant;
+    [SerializeField]
+    public Sprite sick;
+    [SerializeField]
+    public Sprite healthy;
+    [SerializeField]
+    public Sprite dead;
 
     //Patient class used to store information to be processed into rooms
     public class Patient 
@@ -55,6 +55,7 @@ public class RoomSystem : MonoBehaviour
     private static Color filledColor = Color.white;
     public class Room
     {
+      
         [SerializeField]
         public Image fillRepersent;
         [SerializeField]
@@ -69,13 +70,21 @@ public class RoomSystem : MonoBehaviour
         //Calculates upon recieving patient
         [SerializeField]
         private bool willFail;
+        private Sprite vacant;
+        private Sprite sick;
+        private Sprite healthy;
+        private Sprite dead;
 
         public bool isOpen()
         {
             return empty;
         }
-        public Room(Image correspondSymbol, TMPro.TextMeshProUGUI correspondText)
+        public Room(Image correspondSymbol, TMPro.TextMeshProUGUI correspondText, Sprite vacant, Sprite sick, Sprite healthy, Sprite dead)
         {
+            this.vacant = vacant;
+            this.sick = sick;
+            this.healthy = healthy;
+            this.dead = dead;
             fillRepersent = correspondSymbol;
             timeLeftRepersent = correspondText;
         }
@@ -84,7 +93,7 @@ public class RoomSystem : MonoBehaviour
         {
             if (empty)
             {
-                //fillRepersent.GetComponent<Image>().sprite = sick;
+                fillRepersent.GetComponent<Image>().sprite = sick;
                 empty = false;
                 currentPatient = admitPat;
                 countDownTime = admitPat.fixTime;
@@ -106,7 +115,7 @@ public class RoomSystem : MonoBehaviour
                 //On surgery fix
                 if (countDownTime <= 0)
                 {
-                    //fillRepersent.GetComponent<Image>().sprite = vacant;
+                    fillRepersent.GetComponent<Image>().sprite = vacant;
                     if (willFail)
                     {
                         // TODO: Do death animation
@@ -231,7 +240,7 @@ public class RoomSystem : MonoBehaviour
     {
         for(int i = 0; i < roomsAmount; i++)
         {
-            rooms.Add(new Room(roomRepersent[i], timeRepersent[i]));
+            rooms.Add(new Room(roomRepersent[i], timeRepersent[i], vacant, sick, healthy, dead));
         }
         /*
         Patient sabrina = new Patient("sabrina", "w", 3, 1);
