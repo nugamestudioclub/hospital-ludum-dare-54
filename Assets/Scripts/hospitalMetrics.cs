@@ -37,6 +37,7 @@ public class hospitalMetrics : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        hospitalDeaths = 0;
         //Finds if Funds and reputation have been defined
         //Funds have not been defined
         if (hospitalFunds == -20)
