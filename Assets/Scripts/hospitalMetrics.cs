@@ -11,7 +11,9 @@ public class hospitalMetrics : MonoBehaviour
     public const string fundsPrefAdress = "Funds";
     public const string reputationPrefAdress = "Reputation";
     private static int hospitalFunds = -20;
+    private static int hospitalStartingFund = 0;
     private static int hospitalReputation = -20;
+    private static int hospitalStartingReputation = 0;
     private static int hospitalDeaths = 0;
     //Adjustable vars
     [SerializeField]
@@ -47,8 +49,10 @@ public class hospitalMetrics : MonoBehaviour
         //Reputation have not been defined
         if(hospitalReputation == -20)
         {
-            hospitalReputation = startingReputation;
+            hospitalStartingReputation = startingReputation;
         }
+        hospitalStartingFund = hospitalFunds;
+        hospitalStartingReputation = hospitalReputation;
     }
     //Helper edit functions
     private static void adjustFunds(int amount)
@@ -89,6 +93,14 @@ public class hospitalMetrics : MonoBehaviour
     public static int getFunds()
     {
         return hospitalFunds;
+    }
+    public static int getStartFunds()
+    {
+        return hospitalStartingFund;
+    }
+    public static int getStartReputation()
+    {
+        return hospitalStartingReputation;
     }
     public static int getRep()
     {
