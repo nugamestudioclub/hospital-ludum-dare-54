@@ -20,7 +20,21 @@ public class NoteCardsSystem : MonoBehaviour
     {
         
     }
-
+    public bool displayMessage(string message)
+    {
+        bool existsActive = false;
+        for(int i = 0; i < deck.Length; i++)
+        {
+            if (activated[i])
+            {
+                existsActive = true;
+                deck[i].showNotecard(message);
+                timeLeft[i] = timeStay;
+                break;
+            }
+        }
+        return existsActive;
+    }
     // Update is called once per frame
     void Update()
     {
