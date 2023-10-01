@@ -52,14 +52,14 @@ public class SetUIText : MonoBehaviour
       "Liam", "Johnny", "Colin", "Clemence", "Allen", "Alec", "Shane", "Isabella", "Russell", "Aliyah", "Bobby", "Stacy", "Mo", "Michael",
       "Bernie", "Michelle", "Virgil", "Adele", "Nick", "Robbie", "Hailey", "Sophie", "Charlotte", "Eldana", "Shirley", "Pierce", "Troy",
       "Britta", "Abed", "Annie", "Jeff", "Gordon", "Paul", "Ethan", "Bo", "Burt", "Ernie", "Charles", "Vaughn", "Chelsea", "Piper", "Karen",
-      "Linda", "Ashley", "Matthew", "Ian", "Grace", "Nina", "CJ", "RJ", "BJ"
+      "Linda", "Ashley", "Matthew", "Ian", "Barack", "Grace", "Nina", "CJ", "RJ", "BJ"
     };
     
     private string[] _lastNames = new string[]
     {
     "Johnson", "Smith", "Green", "Black", "Brown", "White", "Gordon", "Morgan", "Obama", "Fowler", "Murphy", "McGraw", "Ferrell", "Layton",
-    "Washington", "Simpson", "Otto", "Oliver", "Phillips", "Allen", "Hill", "Lewis", "Carmen", "O�Hara", "Gibbs", "Bell", "Hernandez",
-    "Safdie", "King", "Dano", "Hawke", "Lawrence", "Mooney", "Norton", "Bailey", "Neville", "Lane", "Miller", "Sanders", "O�Brien",
+    "Washington", "Simpson", "Otto", "Oliver", "Phillips", "Allen", "Hill", "Lewis", "Carmen", "O'Hara", "Gibbs", "Bell", "Hernandez",
+    "Safdie", "King", "Dano", "Hawke", "Lawrence", "Mooney", "Norton", "Bailey", "Neville", "Lane", "Miller", "Sanders", "O'Brien",
     "McDonald", "Jordan", "Peterson", "Sanchez", "Huang", "Anderson", "Aarons"
     };
 
@@ -69,7 +69,7 @@ public class SetUIText : MonoBehaviour
     new insurance("Smiles Inc.", 3500),
     new insurance("MidCare Health", 3000),
     new insurance("Lowmark Inc.", 2500),
-    new insurance("Fat Johnson & Johnson", 2000),
+    new insurance("John & Son", 2000),
     new insurance("Cigma Nuts", 1500),
     new insurance("RGB Shield", 1000),
     new insurance("Inhumana", 500)
