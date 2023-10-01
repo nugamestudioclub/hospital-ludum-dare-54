@@ -16,12 +16,14 @@ public class Notecard : MonoBehaviour
 
     [HideInInspector]
     public bool _showNotecard = false;
-
+    [SerializeField]
+    public bool inView = false;
     // Moves card on screen
     public void showNotecard(string input)
     {
         text.text = input;
         _showNotecard = true;
+        inView = true;
     }
 
     // Moves card off screen

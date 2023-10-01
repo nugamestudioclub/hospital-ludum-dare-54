@@ -23,6 +23,10 @@ public class TipCardSwipeIn : MonoBehaviour
         else
         {
             transform.position = Vector3.MoveTowards(transform.position, _startPoint.position, 5000f * Time.deltaTime);
+            if(Vector3.Distance(transform.position, _startPoint.position) < 0.1)
+            {
+                _notecard.inView = false;
+            }
         }
     }
 }
