@@ -4,13 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 public class RoomSystem : MonoBehaviour
 {
+    [SerializeField]
+    public static bool debug = true;
     #region patientClass
     [SerializeField]
     private static float severityToTimeRatio = 5;
     [SerializeField]
-    private static float severityToFailRatio = 1;
+    private static float severityToFailRatio = 10;
     [SerializeField]
-    private static float severityToDieOnTurndown = 1;
+    private static float severityToDieOnTurndown = 10;
     //Patient class used to store information to be processed into rooms
     public class Patient 
     {
@@ -96,7 +98,15 @@ public class RoomSystem : MonoBehaviour
                     if (willFail)
                     {
                         hospitalMetrics.handleHospitalDeath();
-                        print("Had Died");
+                        if (debug)
+                        {
+                            print(currentPatient.firstName + "has died in room");
+                        }
+                    }
+                    else
+                    {
+                        print(currentPatient.firstName + "has survived and paid out $" + currentPatient.insuranceValue + " from " + currentPatient.insuranceName);
+                        hospitalMetrics.handleSuccess(currentPatient.insuranceValue);
                     }
                     empty = true;
                 }
@@ -109,8 +119,6 @@ public class RoomSystem : MonoBehaviour
     }
     #endregion
     #region var
-    [SerializeField]
-    private bool debug;
     [SerializeField]
     private int waitListSpace;
     [SerializeField]
@@ -141,7 +149,7 @@ public class RoomSystem : MonoBehaviour
         }
     }
     //Attempts to add a patient to a unused room
-    public bool addPatientToRoom(Patient admittedPatient)
+    public bool addPatientToRoom(Patient admittedPatient, bool fromWaitlist)
     {
         Room getOpenRoom = hasVacantRoom();
         //Room Found
@@ -152,7 +160,10 @@ public class RoomSystem : MonoBehaviour
                 print(admittedPatient.firstName + " has moved into room");
             }
             getOpenRoom.admitPatient(admittedPatient);
-            hospitalMetrics.handleHospitalAdmit();
+            if (!fromWaitlist)
+            {
+                hospitalMetrics.handleHospitalAdmit();
+            }
             return true;
         }
         //Room Not found
@@ -246,7 +257,7 @@ public class RoomSystem : MonoBehaviour
                 {
                     print("patient "+ pat.firstName + " moved in from waitlist");
                 }
-                if (addPatientToRoom(pat))
+                if (addPatientToRoom(pat, true))
                 {
                     waitList.Remove(pat);
                 }
