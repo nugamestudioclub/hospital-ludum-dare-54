@@ -13,6 +13,15 @@ public class RoomSystem : MonoBehaviour
     private static float severityToFailRatio = 10;
     [SerializeField]
     private static float severityToDieOnTurndown = 10;
+  //  [SerializeField]
+  //  public Sprite vacant;
+  //  [SerializeField]
+  //  public Sprite sick;
+  //  [SerializeField]
+  //  public Sprite healthy;
+  //  [SerializeField]
+  //  public Sprite dead;
+
     //Patient class used to store information to be processed into rooms
     public class Patient 
     {
@@ -61,11 +70,6 @@ public class RoomSystem : MonoBehaviour
         [SerializeField]
         private bool willFail;
 
-        Sprite vacent = Resources.Load<Sprite>("room_icon4");
-        Sprite sick = Resources.Load<Sprite>("room_icon3");
-        Sprite healthy = Resources.Load<Sprite>("room_icon2");
-        Sprite dead = Resources.Load<Sprite>("room_icon1");
-
         public bool isOpen()
         {
             return empty;
@@ -80,7 +84,7 @@ public class RoomSystem : MonoBehaviour
         {
             if (empty)
             {
-                fillRepersent.GetComponent<Image>().sprite = sick;
+                //fillRepersent.GetComponent<Image>().sprite = sick;
                 empty = false;
                 currentPatient = admitPat;
                 countDownTime = admitPat.fixTime;
@@ -102,9 +106,10 @@ public class RoomSystem : MonoBehaviour
                 //On surgery fix
                 if (countDownTime <= 0)
                 {
+                    //fillRepersent.GetComponent<Image>().sprite = vacant;
                     if (willFail)
                     {
-                        fillRepersent.GetComponent<Image>().sprite = dead;
+                        // TODO: Do death animation
                         hospitalMetrics.handleHospitalDeath();
                         if (debug)
                         {
@@ -113,7 +118,6 @@ public class RoomSystem : MonoBehaviour
                     }
                     else
                     {
-                        fillRepersent.GetComponent<Image>().sprite = vacent;
                         print(currentPatient.firstName + "has survived and paid out $" + currentPatient.insuranceValue + " from " + currentPatient.insuranceName);
                         hospitalMetrics.handleSuccess(currentPatient.insuranceValue);
                     }
