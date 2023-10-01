@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DayEndScript : MonoBehaviour
+public class ReflectionScript : MonoBehaviour
 {
     [SerializeField]
     private float timeOnEachPress;
@@ -23,13 +23,7 @@ public class DayEndScript : MonoBehaviour
     {
         timeLeftPress = timeOnEachPress;
         displayText = new string[] {
-            "So far " + hospitalMetrics.getDeaths() + " patients have died today",
-            "",
-            "We have started the day with $" + hospitalMetrics.getStartFunds() + " and ended the day with $" + hospitalMetrics.getFunds(),
-            "",
-            "We started the day with a " + hospitalMetrics.getStartReputation() + " rating and we have ended the day with a " + hospitalMetrics.getRep() + " rating",
-            "",
-            "In all honesty I would say that the day went " + getCurrentState()
+            "REFLECTION"
         };
     }
     // Update is called once per frame
@@ -42,11 +36,11 @@ public class DayEndScript : MonoBehaviour
             {
                 timeLeftPress = timeOnEachPress;
                 //Is finished
-                if(currentLine >= displayText.Length)
+                if (currentLine >= displayText.Length)
                 {
                     finished = true;
                 }
-                else if(currentChar >= displayText[currentLine].Length)
+                else if (currentChar >= displayText[currentLine].Length)
                 {
                     display.text += "<br>";
                     currentLine++;
