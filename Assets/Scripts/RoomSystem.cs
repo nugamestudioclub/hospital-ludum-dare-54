@@ -113,7 +113,7 @@ public class RoomSystem : MonoBehaviour
             }
             else
             {
-                fillRepersent.color = defaultColor;
+                //fillRepersent.color = defaultColor;
             }
         }
     }
