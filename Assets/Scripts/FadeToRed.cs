@@ -3,25 +3,25 @@ using UnityEngine.UI;
 
 public class FadeToRed : MonoBehaviour
 {
-    [SerializeField] private Image imageToFade;
-    [SerializeField] private float fadeDuration = 2.0f; // Duration of the fade in seconds
-    [SerializeField] private Color targetColor = new Color(255, 128, 128);
+    [SerializeField] private Image _imageToFade;
+    [SerializeField] private float _fadeDuration = 2.0f; // Duration of the fade in seconds
+    [SerializeField] private Color _targetColor = new Color(255, 128, 128);
     
-    private Color initialColor = Color.white;
-    private float currentFadeTime = 0.0f;
-    private bool isFading = true;
+    private Color _initialColor = Color.white;
+    private float _currentFadeTime = 0.0f;
+    private bool _isFading = true;
 
     private void Update()
     {
-        if (isFading)
+        if (_isFading)
         {
-            currentFadeTime += Time.deltaTime;
-            float t = Mathf.Clamp01(currentFadeTime / fadeDuration);
-            imageToFade.color = Color.Lerp(initialColor, targetColor, t);
+            _currentFadeTime += Time.deltaTime;
+            float t = Mathf.Clamp01(_currentFadeTime / _fadeDuration);
+            _imageToFade.color = Color.Lerp(_initialColor, _targetColor, t);
 
             if (t >= 1.0f)
             {
-                isFading = false;
+                _isFading = false;
             }
         }
     }
