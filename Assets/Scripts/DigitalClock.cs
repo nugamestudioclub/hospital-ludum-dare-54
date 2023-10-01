@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class DigitalClock : MonoBehaviour
 {
@@ -47,6 +48,7 @@ public class DigitalClock : MonoBehaviour
         {
             isWorking = false;
             Debug.Log("End Day");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             //go to next scene and show stats
         }
         else
