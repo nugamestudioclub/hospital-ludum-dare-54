@@ -100,11 +100,12 @@ public class RoomSystem : MonoBehaviour
                         hospitalMetrics.handleHospitalDeath();
                         if (debug)
                         {
-                            print("Had Died");
+                            print(currentPatient.firstName + "has died in room");
                         }
                     }
                     else
                     {
+                        print(currentPatient.firstName + "has survived and paid out $" + currentPatient.insuranceValue + " from " + currentPatient.insuranceName);
                         hospitalMetrics.handleSuccess(currentPatient.insuranceValue);
                     }
                     empty = true;
@@ -148,7 +149,7 @@ public class RoomSystem : MonoBehaviour
         }
     }
     //Attempts to add a patient to a unused room
-    public bool addPatientToRoom(Patient admittedPatient)
+    public bool addPatientToRoom(Patient admittedPatient, bool fromWaitlist)
     {
         Room getOpenRoom = hasVacantRoom();
         //Room Found
@@ -159,7 +160,10 @@ public class RoomSystem : MonoBehaviour
                 print(admittedPatient.firstName + " has moved into room");
             }
             getOpenRoom.admitPatient(admittedPatient);
-            hospitalMetrics.handleHospitalAdmit();
+            if (!fromWaitlist)
+            {
+                hospitalMetrics.handleHospitalAdmit();
+            }
             return true;
         }
         //Room Not found
@@ -253,7 +257,7 @@ public class RoomSystem : MonoBehaviour
                 {
                     print("patient "+ pat.firstName + " moved in from waitlist");
                 }
-                if (addPatientToRoom(pat))
+                if (addPatientToRoom(pat, true))
                 {
                     waitList.Remove(pat);
                 }

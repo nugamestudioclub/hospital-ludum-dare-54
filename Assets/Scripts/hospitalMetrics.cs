@@ -85,6 +85,6 @@ public class hospitalMetrics : MonoBehaviour
     void Update()
     {
         fundsText.text = "Funds: " + Mathf.Round(hospitalFunds);
-        reputationText.text = "Funds: " + Mathf.Round(hospitalReputation);
+        reputationText.text = "Reputation: " + Mathf.Round(hospitalReputation);
     }
 }

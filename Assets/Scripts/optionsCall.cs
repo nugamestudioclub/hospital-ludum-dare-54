@@ -24,7 +24,7 @@ public class optionsCall : MonoBehaviour
     public void callAccept()
     {
         currentPatient = getInfo.getPatient();
-        if (system.addPatientToRoom(currentPatient))
+        if (system.addPatientToRoom(currentPatient, false))
         {
             getInfo.SetText();
             getImage.ChangeImage();
