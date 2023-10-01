@@ -575,11 +575,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 299027749982818190, guid: 50e80787c375bb340a1fba8d6ee62d4f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 538
       objectReference: {fileID: 0}
     - target: {fileID: 299027749982818190, guid: 50e80787c375bb340a1fba8d6ee62d4f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 363
       objectReference: {fileID: 0}
     - target: {fileID: 299027749982818190, guid: 50e80787c375bb340a1fba8d6ee62d4f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2613,6 +2613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e6ae9ba47beb4fdc9e250e4e07277ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  note: {fileID: 0}
   _notecard: {fileID: 1160568697}
   text: {fileID: 455089967}
   _showNotecard: 0
@@ -4723,7 +4724,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6f81d6ffbd26aa43adb26fbe8b8fad9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  note: {fileID: 964660653}
   _clipboard: {fileID: 2016644122}
   _showClipboard: 0
 --- !u!222 &2133946914

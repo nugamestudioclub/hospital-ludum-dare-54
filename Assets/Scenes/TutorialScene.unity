@@ -734,7 +734,7 @@ GameObject:
   - component: {fileID: 863513713}
   - component: {fileID: 863513712}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -850,21 +850,19 @@ MonoBehaviour:
   _tutorialText: {fileID: 1171816507}
   _cardNumberText: {fileID: 2057405356}
   _instructions:
-  - "Welcome to (game-title), the world\u2019s foremost interactive healthcare simulation! "
-  - "As an ER receptionist, your goal is to bolster Mass Specific\u2019s status by
-    reaching important financial goals and maintaining our excellent reputation. "
-  - "One at a time, sick and injured members of the public will approach your desk
-    to ask for help. If their ailment is serious enough, make sure to give them a
-    room in your unit. If they\u2019ll be fine without your help, consider sending
-    them away. If you aren\u2019t sure, add them to the waitlist. Be careful with
-    your decisions, as you only have 8 rooms available in your unit! "
+  - "Welcome to (game-title), the world\u2019s foremost interactive healthcare simulation.
+    As an ER receptionist, your goal is to bolster Mass Specific\u2019s prestige
+    by reaching important financial goals and maintaining our excellent reputation."
+  - One at a time, sick and injured members of the public will approach your desk.
+    Give them a room, add them to the waitlist, or send them away - the choice is
+    yours. Be careful with your decisions, as you only have 8 rooms available in
+    your unit!
   - "To do your job properly, you must pay attention to each potential patient\u2019s
-    insurance plan. The better insurance they have, the more money you\u2019ll make
-    for Mass Specific. Also, consider how serious each injury is; if you decline
-    to help someone and they die, our reputation will plummet. "
+    insurance plan as well as how seriously they\u2019re injured; please, try not
+    to let anyone die on your watch. "
   - "At the end of the week, upper management will review your performance and determine
     if you\u2019re worthy of being a Mass Specific employee. Make the right decisions,
-    save lives, and most importantly, make some money! "
+    save lives, and most importantly, make some money!"
   textIndex: 0
 --- !u!114 &1171816507
 MonoBehaviour:
@@ -914,8 +912,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1699,7 +1697,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1/5
+  m_text: 1/4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4c5947694443f2842b4739751c136c6c, type: 2}
   m_sharedMaterial: {fileID: -4864251539796818871, guid: 4c5947694443f2842b4739751c136c6c, type: 2}
@@ -1776,6 +1774,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2057405353}
   m_CullTransparentMesh: 1
+--- !u!1001 &4897466249693447776
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1001215776656264683, guid: 87db8fad510ec344e85cd04f52bf5006, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001215776656264683, guid: 87db8fad510ec344e85cd04f52bf5006, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001215776656264683, guid: 87db8fad510ec344e85cd04f52bf5006, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001215776656264683, guid: 87db8fad510ec344e85cd04f52bf5006, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001215776656264683, guid: 87db8fad510ec344e85cd04f52bf5006, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001215776656264683, guid: 87db8fad510ec344e85cd04f52bf5006, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001215776656264683, guid: 87db8fad510ec344e85cd04f52bf5006, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001215776656264683, guid: 87db8fad510ec344e85cd04f52bf5006, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001215776656264683, guid: 87db8fad510ec344e85cd04f52bf5006, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001215776656264683, guid: 87db8fad510ec344e85cd04f52bf5006, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095831050948806969, guid: 87db8fad510ec344e85cd04f52bf5006, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 06fa6df871d6800468da7edc5063d089, type: 3}
+    - target: {fileID: 8237207516408655599, guid: 87db8fad510ec344e85cd04f52bf5006, type: 3}
+      propertyPath: m_Name
+      value: Music Player
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 87db8fad510ec344e85cd04f52bf5006, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1783,3 +1842,4 @@ SceneRoots:
   - {fileID: 1287017463}
   - {fileID: 586434241}
   - {fileID: 1742974039}
+  - {fileID: 4897466249693447776}
