@@ -21,11 +21,11 @@ public class SwipeIn : MonoBehaviour
     {
         if (_clipboard._showClipboard == true)
         {
-            transform.position = Vector3.MoveTowards(transform.position, _endPoint.position, 1000f * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, _endPoint.position, 5000f * Time.deltaTime);
         }
         else
         {
-            transform.position = Vector3.MoveTowards(transform.position, _startPoint.position, 1000f * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, _startPoint.position, 5000f * Time.deltaTime);
         }
     }
 }
