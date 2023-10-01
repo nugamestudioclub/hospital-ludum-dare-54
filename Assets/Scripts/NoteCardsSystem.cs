@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class NoteCardsSystem : MonoBehaviour
 {
+    //Deck
+    [SerializeField]
+    Notecard[] deck;
     // Start is called before the first frame update
     void Start()
     {

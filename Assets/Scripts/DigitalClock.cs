@@ -43,17 +43,14 @@ public class DigitalClock : MonoBehaviour
         }
         if (hasEnded)
         {
-            print("wow");
             if (cacheTransitionImage.getComplete())
             {
                 if (hospitalMetrics.getDays() >= lastDay)
                 {
-                    print("wow");
                     SceneManager.LoadScene(gameEndScene);
                 }
                 else
                 {
-                    print("wodw");
                     SceneManager.LoadScene(dayEndScene);
                 }
             }
