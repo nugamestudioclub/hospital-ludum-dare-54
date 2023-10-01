@@ -5,10 +5,14 @@ using UnityEngine;
 public class DayEndScript : MonoBehaviour
 {
     private TMPro.TextMeshProUGUI display;
-    private string displayText;
+    private string[] displayText;
     private void Start()
     {
-       // displayText = "So far " + hospitalMetrics.getDeaths " patients have died"
+        displayText = new string[] {
+            "So far " + hospitalMetrics.getDeaths() + " patients have died",
+            "",
+            "We have ",
+        };
     }
     // Update is called once per frame
     void Update()
