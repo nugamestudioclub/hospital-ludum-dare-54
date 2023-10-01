@@ -2134,7 +2134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ab4317c8f774c84be7e1593a1d8913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 1
   waitListSpace: 5
   roomsAmount: 8
   roomRepersent:
@@ -2184,7 +2183,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fundsText: {fileID: 1760830145}
   reputationText: {fileID: 361516275}
-  effectPrefab: {fileID: 0}
   startingFunds: 5
   startingReputation: 5
 --- !u!1 &956086296
