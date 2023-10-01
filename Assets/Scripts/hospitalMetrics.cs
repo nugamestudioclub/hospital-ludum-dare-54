@@ -14,6 +14,12 @@ public class hospitalMetrics : MonoBehaviour
     private static int hospitalReputation = -20;
     //Adjustable vars
     [SerializeField]
+    private TMPro.TextMeshProUGUI fundsText;
+    [SerializeField]
+    private TMPro.TextMeshProUGUI reputationText;
+    [SerializeField]
+    private GameObject effectPrefab;
+    [SerializeField]
     private int startingFunds;
     [SerializeField]
     private int startingReputation;
@@ -45,37 +51,54 @@ public class hospitalMetrics : MonoBehaviour
         }
     }
     //Helper edit functions
-    public static void adjustFunds(int amount)
+    private static void adjustFunds(int amount)
     {
         hospitalFunds += amount;
+        if (amount > 0)
+        {
+            //Signify increase
+        }
+        else if (amount < 0)
+        {
+            //Signify loss
+        }
     }
-    public static void adjustReputation(int amount)
+    private static void adjustReputation(int amount)
     {
         hospitalReputation += amount;
+        if(amount > 0)
+        {
+            //Signify increase
+        }
+        else if(amount < 0)
+        {
+            //Signify loss
+        }
     }
     public static void handleRejectionNorm()
     {
-        hospitalReputation += rejectionNormRep;
+        adjustReputation(rejectionNormRep);
     }
     public static void handleRejectionDeath()
     {
-        hospitalReputation += rejectionDeathRep;
+        adjustReputation(rejectionDeathRep);
     }
     public static void handleHospitalDeath()
     {
-        hospitalReputation += hospitalDeathRep;
+        adjustReputation(hospitalDeathRep);
     }
     public static void handleHospitalAdmit()
     {
-        hospitalReputation += hospitalAdmitRep;
+        adjustReputation(hospitalAdmitRep);
     }
     public static void handleHospitalWaitlist()
     {
-        hospitalReputation += hospitalWaitlistRep;
+        adjustReputation(hospitalWaitlistRep);
     }
     // Update is called once per frame
     void Update()
     {
-        
+        fundsText.text = "Funds: " + Mathf.Round(hospitalFunds);
+        reputationText.text = "Funds: " + Mathf.Round(hospitalReputation);
     }
 }
