@@ -11,8 +11,10 @@ public class hospitalMetrics : MonoBehaviour
     public const string fundsPrefAdress = "Funds";
     public const string reputationPrefAdress = "Reputation";
     private static int hospitalFunds = -20;
+    public static int fundGoal = 20000;
     private static int hospitalStartingFund = 0;
     private static int hospitalReputation = -20;
+    public static int reputationGoal = 200;
     private static int hospitalStartingReputation = 0;
     private static int hospitalDeaths = 0;
     private static int currentDay = 0;

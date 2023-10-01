@@ -19,8 +19,7 @@ public class DigitalClock : MonoBehaviour
     private string dayEndScene;
     [SerializeField]
     private string gameEndScene;
-    [SerializeField]
-    private int lastDay;
+    public static int lastDay = 5;
     [SerializeField]
     private bool hasEnded;
     private bool isWorking = true;
