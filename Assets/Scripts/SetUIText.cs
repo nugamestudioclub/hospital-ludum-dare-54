@@ -128,7 +128,7 @@ public class SetUIText : MonoBehaviour
     {
         SetValues(_name, _firstNames, _lastNames);
         currentInsurance = _insurances[UnityEngine.Random.Range(0, _insurances.Length - 1)];
-        SetValues(_insurance, currentInsurance.ToString());
+        SetValues(_insurance, currentInsurance.ToString() + " ( $" + currentInsurance +" )" );
         currentInjury = _injuries[UnityEngine.Random.Range(0, _injuries.Length - 1)];
         SetValues(_injury, currentInjury.ToString());
     }
