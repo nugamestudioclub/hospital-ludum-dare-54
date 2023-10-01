@@ -255,6 +255,11 @@ public class RoomSystem : MonoBehaviour
             hospitalMetrics.handleRejectionNorm();
         }
     }
+
+    public List<Patient> getWaitlist()
+    {
+        return waitList;
+    }
     void Start()
     {
         cacheNotes = FindAnyObjectByType<NoteCardsSystem>();
