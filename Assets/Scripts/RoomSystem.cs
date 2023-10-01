@@ -125,17 +125,17 @@ public class RoomSystem : MonoBehaviour
                         {
                             print(currentPatient.firstName + "has died in room");
                         }
-                        if (!FindAnyObjectByType<NoteCardsSystem>().displayMessage(currentPatient.firstName + " has died in the room"))
+                        if (!FindAnyObjectByType<NoteCardsSystem>().displayMessage(currentPatient.firstName + " has died in the room from " + currentPatient.injuryName))
                         {
                             print("notecard fail");
                         }
                     }
                     else
                     {
-                        if (!FindAnyObjectByType<NoteCardsSystem>().displayMessage(currentPatient.firstName + "has survived and paid out $" + currentPatient.insuranceValue + " from " + currentPatient.insuranceName))
+                        /*if (!FindAnyObjectByType<NoteCardsSystem>().displayMessage(currentPatient.firstName + "has survived and paid out $" + currentPatient.insuranceValue + " from " + currentPatient.insuranceName))
                         {
                             print("notecard fail");
-                        }
+                        }*/
                         if (debug)
                         {
                             print(currentPatient.firstName + "has survived and paid out $" + currentPatient.insuranceValue + " from " + currentPatient.insuranceName);
