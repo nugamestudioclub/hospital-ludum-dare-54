@@ -53,7 +53,7 @@ public class hospitalMetrics : MonoBehaviour
         //Reputation have not been defined
         if(hospitalReputation == -20)
         {
-            hospitalStartingReputation = startingReputation;
+            hospitalReputation = startingReputation;
         }
         hospitalStartingFund = hospitalFunds;
         hospitalStartingReputation = hospitalReputation;
