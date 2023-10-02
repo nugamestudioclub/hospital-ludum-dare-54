@@ -15,6 +15,13 @@ public class ScriptWinLoseConditions : MonoBehaviour
     private int currentLine = 0;
     private int currentChar = 0;
     private bool finished = false;
+
+
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _winSong;
+    [SerializeField] private AudioClip _loseSong;
+
+
     //displays good, okay, and bad
     private string getCurrentState()
     {
@@ -23,6 +30,17 @@ public class ScriptWinLoseConditions : MonoBehaviour
     private void Start()
     {
         bool success = (float)hospitalMetrics.getFunds() > (float)hospitalMetrics.fundGoal && (float)hospitalMetrics.getRep() > (float)hospitalMetrics.reputationGoal;
+
+        if (success)
+        {
+            _audioSource.clip = _winSong;
+        }
+        else
+        {
+            _audioSource.clip = _loseSong;
+        }
+        _audioSource.Play();
+
         TMPro.TextMeshProUGUI text = GetComponent<TMPro.TextMeshProUGUI>();
         if (success)
         {

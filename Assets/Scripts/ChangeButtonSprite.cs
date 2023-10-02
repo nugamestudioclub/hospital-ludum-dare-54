@@ -17,8 +17,7 @@ public class ChangeButtonSprite : MonoBehaviour
     [SerializeField] private Sprite _waitlistEmpty;
 
 
-    // Update is called once per frame
-    void LateUpdate()
+    private void Update()
     {
         Debug.Log(_roomSystem.getWaitlist().Count);
         if (_roomSystem.hasVacantRoom() == null)
@@ -26,7 +25,7 @@ public class ChangeButtonSprite : MonoBehaviour
             _giveRoomImage.sprite = _giveRoomX;
             _giveRoomButton.interactable = false;
 
-            if(_roomSystem.getWaitlist().Count > 4)
+            if (_roomSystem.getWaitlist().Count > 4)
             {
                 _waitlistImage.sprite = _waitlistX;
                 _waitlistButton.interactable = false;
@@ -37,10 +36,7 @@ public class ChangeButtonSprite : MonoBehaviour
             _giveRoomImage.sprite = _giveRoomEmpty;
             _giveRoomButton.interactable = true;
         }
-    }
 
-    private void Update()
-    {
         if (_roomSystem.getWaitlist().Count < 5)
         {
             _waitlistImage.sprite = _waitlistEmpty;

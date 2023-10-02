@@ -453,7 +453,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 960, y: 540}
+  m_ReferenceResolution: {x: 948, y: 533}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -715,7 +715,7 @@ MonoBehaviour:
   _tutorialText: {fileID: 1171816507}
   _cardNumberText: {fileID: 2057405356}
   _instructions:
-  - "Welcome to (game-title), the world\u2019s foremost interactive healthcare simulation.
+  - "Welcome to Checking In, the world\u2019s foremost interactive healthcare simulation.
     As an ER receptionist, your goal is to bolster Mass Specific\u2019s prestige
     by reaching important financial goals and maintaining our excellent reputation."
   - One at a time, sick and injured members of the public will approach your desk.
@@ -749,7 +749,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Welcome to (game-title), the world\u2019s foremost interactive healthcare
+  m_text: "Welcome to Checking In, the world\u2019s foremost interactive healthcare
     simulation!\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4c5947694443f2842b4739751c136c6c, type: 2}
@@ -874,6 +874,18 @@ PrefabInstance:
     - target: {fileID: 468951701017610132, guid: 8504131de629702498954250afc2233a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3926986818286430145, guid: 8504131de629702498954250afc2233a, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.2509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 3926986818286430145, guid: 8504131de629702498954250afc2233a, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.2901961
+      objectReference: {fileID: 0}
+    - target: {fileID: 3926986818286430145, guid: 8504131de629702498954250afc2233a, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.29803923
       objectReference: {fileID: 0}
     - target: {fileID: 5400928878720144040, guid: 8504131de629702498954250afc2233a, type: 3}
       propertyPath: m_Name
