@@ -163,23 +163,23 @@ public class SetUIText : MonoBehaviour
         int gottenNumber = UnityEngine.Random.Range(0, combinedWeight);
         if(gottenNumber <= sev1Weight)
         {
-            return 1;
+            return 0;
         }
         else if(gottenNumber <= sev1Weight + sev2Weight)
         {
-            return 2;
+            return 1;
         }
         else if(gottenNumber <= sev1Weight + sev2Weight + sev3Weight)
         {
-            return 3;
+            return 2;
         }
         else if(gottenNumber <= sev1Weight + sev2Weight + sev3Weight + sev4Weight)
         {
-            return 4;
+            return 3;
         }
         else
         {
-            return 5;
+            return 4;
         }
     }
     public RoomSystem.Patient getPatient()
