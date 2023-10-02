@@ -6,6 +6,7 @@ using static RoomSystem;
 public class optionsCall : MonoBehaviour
 {
     //Transfers text
+    float timeLeft = 30;
     RoomSystem system;
     SetUIText getInfo;
     ChangePatientImage getImage;
@@ -16,6 +17,7 @@ public class optionsCall : MonoBehaviour
 
     public void callReject()
     {
+        timeLeft = 30;
         currentPatient = getInfo.getPatient();
         system.patientReject(currentPatient);
         getInfo.SetText();
@@ -26,6 +28,7 @@ public class optionsCall : MonoBehaviour
         currentPatient = getInfo.getPatient();
         if (system.addPatientToRoom(currentPatient, false))
         {
+            timeLeft = 30;
             getInfo.SetText();
             getImage.ChangeImage();
         }
@@ -39,6 +42,7 @@ public class optionsCall : MonoBehaviour
         currentPatient = getInfo.getPatient();
         if (system.addPatientToWaitlist(currentPatient))
         {
+            timeLeft = 30;
             getInfo.SetText();
             getImage.ChangeImage();
         }
@@ -53,5 +57,13 @@ public class optionsCall : MonoBehaviour
         getInfo = GetComponent<SetUIText>();
         system = FindAnyObjectByType<RoomSystem>();
         currentPatient = new Patient("null pat", "null pat", new SetUIText.injury("null", 0), new SetUIText.insurance("null", 0));
+    }
+    private void Update()
+    {
+        timeLeft -= Time.deltaTime;
+        if(timeLeft < 0)
+        {
+            callReject();
+        }
     }
 }

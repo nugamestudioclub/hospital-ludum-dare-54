@@ -155,6 +155,8 @@ public class RoomSystem : MonoBehaviour
     #endregion
     #region var
     [SerializeField]
+    private float timeLeft;
+    [SerializeField]
     private NoteCardsSystem cacheNotes;
     [SerializeField]
     private int waitListSpace;
