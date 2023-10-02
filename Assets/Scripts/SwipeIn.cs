@@ -10,6 +10,7 @@ public class SwipeIn : MonoBehaviour
     [SerializeField] private Transform _endPoint;
 
 
+
     // Start is called before the first frame update
     void OnEnable()
     {

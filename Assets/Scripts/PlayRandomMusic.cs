@@ -28,8 +28,8 @@ public class PlayRandomMusic : MonoBehaviour
             }
             _audioSource.clip = _songs[randomIndex];
             _currentIndex = randomIndex;
+            _audioSource.Play();
 
         }
     }
-
 }

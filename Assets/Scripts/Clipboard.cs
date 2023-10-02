@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Clipboard : MonoBehaviour
 {
-    
+
+
     [SerializeField] private GameObject _clipboard;
 
-    [HideInInspector]
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _clipboardSound;
+
+
+[HideInInspector]
     public bool _showClipboard = false;
 
     private void Update()
@@ -15,6 +20,7 @@ public class Clipboard : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             _showClipboard = !_showClipboard;
+            _audioSource.PlayOneShot(_clipboardSound);
         }
     }
 }
