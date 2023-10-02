@@ -75,14 +75,14 @@ public class SetUIText : MonoBehaviour
 
     private insurance[] _insurances = new insurance[]
     {
-    new insurance("K. Permanente", 4000),
-    new insurance("Smiles Inc.", 3500),
-    new insurance("MidCare", 3000),
-    new insurance("Lowmark Inc.", 2500),
-    new insurance("John & Son", 2000),
-    new insurance("Cigma Nuts", 1500),
-    new insurance("RGB Shield", 1000),
-    new insurance("Inhumana", 500)
+    new insurance("K. Permanente", 2000),
+    new insurance("Smiles Inc.", 1750),
+    new insurance("MidCare", 1500),
+    new insurance("Lowmark Inc.", 1250),
+    new insurance("John & Son", 1000),
+    new insurance("Cigma Nuts", 750),
+    new insurance("RGB Shield", 500),
+    new insurance("Inhumana", 250)
     };
     private static injury[] sev1Injury = new injury[]
     {

@@ -8,7 +8,7 @@ public class RoomSystem : MonoBehaviour
     public static bool debug = true;
     #region patientClass
     [SerializeField]
-    private static float severityToTimeRatio = 5;
+    private static float severityToTimeRatio = 25;
     [SerializeField]
     private static float severityToFailRatio = 10;
     [SerializeField]
@@ -132,10 +132,10 @@ public class RoomSystem : MonoBehaviour
                     }
                     else
                     {
-                        /*if (!FindAnyObjectByType<NoteCardsSystem>().displayMessage(currentPatient.firstName + "has survived and paid out $" + currentPatient.insuranceValue + " from " + currentPatient.insuranceName))
+                        if (!FindAnyObjectByType<NoteCardsSystem>().displayMessage(currentPatient.firstName + "has survived and paid out $" + currentPatient.insuranceValue + " from " + currentPatient.insuranceName))
                         {
                             print("notecard fail");
-                        }*/
+                        }
                         if (debug)
                         {
                             print(currentPatient.firstName + "has survived and paid out $" + currentPatient.insuranceValue + " from " + currentPatient.insuranceName);
@@ -303,6 +303,10 @@ public class RoomSystem : MonoBehaviour
                 if (debug)
                 {
                     print("patient "+ pat.firstName + " moved in from waitlist");
+                }
+                if (!FindAnyObjectByType<NoteCardsSystem>().displayMessage("patient " + pat.firstName + " moved in from waitlist"))
+                {
+                    print("notecard fail");
                 }
                 if (addPatientToRoom(pat, true))
                 {

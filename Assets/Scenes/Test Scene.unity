@@ -1283,7 +1283,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6494399602118863837, guid: 50e80787c375bb340a1fba8d6ee62d4f, type: 3}
       propertyPath: endTime
-      value: 90
+      value: 240
       objectReference: {fileID: 0}
     - target: {fileID: 6494399602118863837, guid: 50e80787c375bb340a1fba8d6ee62d4f, type: 3}
       propertyPath: lastDay
