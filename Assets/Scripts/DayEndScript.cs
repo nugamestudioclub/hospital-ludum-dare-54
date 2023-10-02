@@ -18,7 +18,7 @@ public class DayEndScript : MonoBehaviour
     //displays good, okay, and bad
     private string getCurrentState()
     {
-        bool positive = (float)hospitalMetrics.getFunds() > (float)hospitalMetrics.fundGoal * ((float)hospitalMetrics.getDays() / (float)DigitalClock.lastDay) && (float)hospitalMetrics.getRep() < (float)hospitalMetrics.reputationGoal * ((float)hospitalMetrics.getDays() / (float)DigitalClock.lastDay);
+        bool positive = (float)hospitalMetrics.getFunds() > (float)hospitalMetrics.fundGoal * ((float)hospitalMetrics.getDays() / (float)DigitalClock.lastDay) && (float)hospitalMetrics.getRep() > (float)hospitalMetrics.reputationGoal * ((float)hospitalMetrics.getDays() / (float)DigitalClock.lastDay);
         string[] usingString;
         string[] positiveFeedback = new string[] {
             "Today was a good day for Big Pharma. Keep up the good work, or else.",
